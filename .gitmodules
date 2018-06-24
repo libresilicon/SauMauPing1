@@ -1,0 +1,3 @@
+[submodule "src/device/NyuziProcessor"]
+	path = src/device/NyuziProcessor
+	url = https://github.com/leviathanch/NyuziProcessor.git

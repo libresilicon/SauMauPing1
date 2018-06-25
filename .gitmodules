@@ -1,3 +1,6 @@
 [submodule "src/device/NyuziProcessor"]
 	path = src/device/NyuziProcessor
 	url = https://github.com/leviathanch/NyuziProcessor.git
+[submodule "src/device/SD-card-controller"]
+	path = src/device/SD-card-controller
+	url = https://github.com/leviathanch/SD-card-controller.git

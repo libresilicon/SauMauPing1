@@ -1,16 +1,24 @@
-SIMULATION_BINARY=impl/testbench
-dirs+=src/testing
-dirs+=src/device
-dirs+=src/device/CPU
-dirs+=src/device/CPU/freechips.rocketchip.system.DefaultConfig
-dirs+=src/device/SD-card-controller/rtl/verilog
+# See LICENSE for license details.
+base_dir := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
+BUILD_DIR := $(base_dir)/builds/u500vc707devkit
+FPGA_DIR := $(base_dir)/fpga-shells/xilinx
+MODEL := U500VC707DevKitFPGAChip
+PROJECT := sifive.freedom.unleashed.u500vc707devkit
+export CONFIG_PROJECT := sifive.freedom.unleashed.u500vc707devkit
+export CONFIG := U500VC707DevKitConfig
+export BOARD := vc707
+export BOOTROM_DIR := $(base_dir)/bootrom/sdboot
 
-SEARCH_DIRS_OPTION=$(foreach dir,$(dirs),$(wildcard $(dir)/*.v))
-INCLUDE_DIRS_OPTION=$(foreach dir,$(dirs),-I $(dir))
+rocketchip_dir := $(base_dir)/rocket-chip
+sifiveblocks_dir := $(base_dir)/sifive-blocks
+VSRCS := \
+	$(rocketchip_dir)/src/main/resources/vsrc/AsyncResetReg.v \
+	$(rocketchip_dir)/src/main/resources/vsrc/plusarg_reader.v \
+	$(sifiveblocks_dir)/vsrc/SRLatch.v \
+	$(FPGA_DIR)/common/vsrc/PowerOnResetFPGAOnly.v \
+	$(FPGA_DIR)/$(BOARD)/vsrc/sdio.v \
+	$(FPGA_DIR)/$(BOARD)/vsrc/vc707reset.v \
+	$(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).rom.v \
+	$(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).v
 
-all:	clean
-	iverilog -o ${SIMULATION_BINARY} ${INCLUDE_DIRS_OPTION} ${SEARCH_DIRS_OPTION} -s testbench
-	./${SIMULATION_BINARY} 
-
-clean:
-	rm -f ./${SIMULATION_BINARY} 
+include common.mk

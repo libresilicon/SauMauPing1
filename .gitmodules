@@ -7,3 +7,12 @@
 [submodule "src/device/hyperram"]
 	path = src/device/hyperram
 	url = https://github.com/libresilicon/hyperram.git
+[submodule "rocket-chip"]
+	path = rocket-chip
+	url = https://github.com/ucb-bar/rocket-chip.git
+[submodule "sifive-blocks"]
+	path = sifive-blocks
+	url = https://github.com/sifive/sifive-blocks.git
+[submodule "fpga-shells"]
+	path = fpga-shells
+	url = https://github.com/sifive/fpga-shells

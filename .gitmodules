@@ -4,3 +4,6 @@
 [submodule "src/device/SD-card-controller"]
 	path = src/device/SD-card-controller
 	url = https://github.com/leviathanch/SD-card-controller.git
+[submodule "src/device/hyperram"]
+	path = src/device/hyperram
+	url = https://github.com/libresilicon/hyperram.git

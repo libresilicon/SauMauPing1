@@ -12,8 +12,31 @@ module saumauping #(
 	output sdc_clk_pad_o
 );
 
-wire reset;
-assign reset = !rst_n;
+//  --------    reset sync-in   --------------------------------------
+
+//  for internal purpose we use a high-active, synchronous RESET
+//  synced-in external (low-active) RESET at least 3 times
+
+    localparam      SYNCIN = 3;
+
+    localparam      c_reset_active = ~0;    // high-active
+    reg [SYNCIN-1:0]r_reset_shiftreg;       // shift register for sync-in
+
+always @ (negedge rst_n or posedge clk)
+begin
+    if (!rst_n)
+        // pull reset immediatly (a-synchronously)
+        r_reset_shiftreg <= c_reset_active;
+    else
+        // release reset delayed (synchronized), right shift operation
+        r_reset_shiftreg <= {1'b0, r_reset_shiftreg[SYNCIN-1:1]};
+end
+
+    //  global RESET line
+    wire            reset;
+assign reset = r_reset_shiftreg[0];
+
+//  --------    core instantiation  ----------------------------------
 
 Rocket cpu(
 	.clock(clk),

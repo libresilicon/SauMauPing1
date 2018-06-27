@@ -1,0 +1,27 @@
+[0m[[0m[0minfo[0m] [0m[0mPackaging /home/leviathan/SauMauPing1/target/scala-2.11/soc_2.11-0.1.0.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	libresilicon/soc/PadFrame$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/leviathan/SauMauPing1/target/scala-2.11/classes/libresilicon/soc/PadFrame$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	libresilicon/soc/SauMauPing$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/leviathan/SauMauPing1/target/scala-2.11/classes/libresilicon/soc/SauMauPing$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	libresilicon/soc/SauMauPingPeripherals$$anonfun$$lessinit$greater$1$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/leviathan/SauMauPing1/target/scala-2.11/classes/libresilicon/soc/SauMauPingPeripherals$$anonfun$$lessinit$greater$1$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	libresilicon/soc/SauMauPingSystem.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/leviathan/SauMauPing1/target/scala-2.11/classes/libresilicon/soc/SauMauPingSystem.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	libresilicon/soc/SauMauPingPeripherals.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/leviathan/SauMauPing1/target/scala-2.11/classes/libresilicon/soc/SauMauPingPeripherals.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	libresilicon/soc/SauMauPing.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/leviathan/SauMauPing1/target/scala-2.11/classes/libresilicon/soc/SauMauPing.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	libresilicon/soc/SauMauPingPeripherals$$anonfun$$lessinit$greater$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/leviathan/SauMauPing1/target/scala-2.11/classes/libresilicon/soc/SauMauPingPeripherals$$anonfun$$lessinit$greater$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	libresilicon/soc/PadFrame.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/leviathan/SauMauPing1/target/scala-2.11/classes/libresilicon/soc/PadFrame.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	libresilicon/soc/SauMauPingSystemModuleImp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/leviathan/SauMauPing1/target/scala-2.11/classes/libresilicon/soc/SauMauPingSystemModuleImp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	libresilicon[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/leviathan/SauMauPing1/target/scala-2.11/classes/libresilicon[0m
+[0m[[0m[0mdebug[0m] [0m[0m	libresilicon/soc/SauMauPingConfig.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/leviathan/SauMauPing1/target/scala-2.11/classes/libresilicon/soc/SauMauPingConfig.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	libresilicon/soc[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/leviathan/SauMauPing1/target/scala-2.11/classes/libresilicon/soc[0m
+[0m[[0m[0minfo[0m] [0m[0mDone packaging.[0m

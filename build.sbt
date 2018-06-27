@@ -1,6 +1,6 @@
 // See LICENSE for license details.
-organization := "com.sifive"
-name := "freedom"
+organization := "com.libresilicon"
+name := "soc"
 version := "0.1.0"
 
 lazy val commonSettings = Seq(
@@ -25,10 +25,6 @@ lazy val sifiveBlocks = (project in file("sifive-blocks")).
   dependsOn(rocketChip).
   settings(commonSettings: _*)
 
-lazy val fpgaShells = (project in file("fpga-shells")).
-  dependsOn(rocketChip, sifiveBlocks).
-  settings(commonSettings: _*)
-
 lazy val freedomPlatforms = (project in file(".")).
-  dependsOn(rocketChip, sifiveBlocks, fpgaShells).
+  dependsOn(rocketChip, sifiveBlocks).
   settings(commonSettings: _*)

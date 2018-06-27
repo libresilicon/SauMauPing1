@@ -48,6 +48,10 @@ $(firrtl): $(shell find $(base_dir)/src/main/scala -name '*.scala') $(FIRRTL_JAR
 	mkdir -p $(dir $@)
 	$(SBT) "runMain freechips.rocketchip.system.Generator $(BUILD_DIR) $(PROJECT) $(MODEL) $(CONFIG_PROJECT) $(CONFIG)"
 
+
+show_classes:
+	$(SBT) "show discoveredMainClasses"
+
 .PHONY: firrtl
 firrtl: $(firrtl)
 

@@ -1,11 +1,12 @@
 # See LICENSE for license details.
 base_dir := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
-BUILD_DIR := $(base_dir)/builds/u500vc707devkit
-FPGA_DIR := $(base_dir)/fpga-shells/xilinx
-MODEL := U500VC707DevKitFPGAChip
-PROJECT := sifive.freedom.unleashed.u500vc707devkit
-export CONFIG_PROJECT := sifive.freedom.unleashed.u500vc707devkit
-export CONFIG := U500VC707DevKitConfig
+BUILD_DIR := $(base_dir)/builds
+#MODEL := U500VC707DevKitFPGAChip
+MODEL := SauMauPing
+PROJECT := libresilicon.soc
+export CONFIG_PROJECT := libresilicon.soc
+#export CONFIG := U500VC707DevKitConfig
+export CONFIG := SauMauPingConfig
 export BOARD := vc707
 export BOOTROM_DIR := $(base_dir)/bootrom/sdboot
 
@@ -15,9 +16,6 @@ VSRCS := \
 	$(rocketchip_dir)/src/main/resources/vsrc/AsyncResetReg.v \
 	$(rocketchip_dir)/src/main/resources/vsrc/plusarg_reader.v \
 	$(sifiveblocks_dir)/vsrc/SRLatch.v \
-	$(FPGA_DIR)/common/vsrc/PowerOnResetFPGAOnly.v \
-	$(FPGA_DIR)/$(BOARD)/vsrc/sdio.v \
-	$(FPGA_DIR)/$(BOARD)/vsrc/vc707reset.v \
 	$(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).rom.v \
 	$(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).v
 

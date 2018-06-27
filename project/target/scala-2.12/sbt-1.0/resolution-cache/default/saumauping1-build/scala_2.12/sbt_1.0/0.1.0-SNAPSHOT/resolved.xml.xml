@@ -4,7 +4,7 @@
 		module="saumauping1-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20180626215341"
+		publication="20180627223140"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>

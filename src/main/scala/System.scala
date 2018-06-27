@@ -1,5 +1,5 @@
 // See LICENSE for license details.
-package sifive.freedom.unleashed.u500vc707devkit
+package libresilicon.soc
 
 import Chisel._
 

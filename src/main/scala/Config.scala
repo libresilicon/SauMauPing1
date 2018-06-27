@@ -1,8 +1,7 @@
 // See LICENSE for license details.
-package sifive.freedom.unleashed.u500polarfireevalkit
+package libresilicon.soc
 
 import freechips.rocketchip.config._
-//import freechips.rocketchip.coreplex._
 import freechips.rocketchip.subsystem._
 import freechips.rocketchip.devices.debug._
 import freechips.rocketchip.devices.tilelink._
@@ -14,19 +13,18 @@ import sifive.blocks.devices.gpio._
 import sifive.blocks.devices.spi._
 import sifive.blocks.devices.uart._
 
-import sifive.fpgashells.devices.microsemi.polarfireddr3.{MemoryMicrosemiDDR3Key, PolarFireEvalKitDDR3Params}
-import sifive.fpgashells.devices.microsemi.polarfireddr4.{MemoryMicrosemiDDR4Key, PolarFireEvalKitDDR4Params}
+import sifive.fpgashells.devices.xilinx.xilinxvc707mig.{MemoryXilinxDDRKey,XilinxVC707MIGParams}
 
-// Default FreedomU PolarFire Eval Kit Config
-class FreedomUPolarFireEvalKitConfig extends Config(
+// Default FreedomUVC707Config
+class FreedomUVC707Config extends Config(
   new WithJtagDTM            ++
   new WithNMemoryChannels(1) ++
-  new WithNBigCores(1)       ++
+  new WithNBigCores(4)       ++
   new BaseConfig
 )
 
-// Freedom U500 PolarFire Eval Kit Peripherals
-class U500PolarFireEvalKitPeripherals extends Config((site, here, up) => {
+// Freedom U500 VC707 Dev Kit Peripherals
+class U500VC707DevKitPeripherals extends Config((site, here, up) => {
   case PeripheryUARTKey => List(
     UARTParams(address = BigInt(0x64000000L)))
   case PeripherySPIKey => List(
@@ -37,15 +35,14 @@ class U500PolarFireEvalKitPeripherals extends Config((site, here, up) => {
     MaskROMParams(address = 0x10000, name = "BootROM"))
 })
 
-// Freedom U500 PolarFire Eval Kit
-class U500PolarFireEvalKitConfig extends Config(
+// Freedom U500 VC707 Dev Kit
+class U500VC707DevKitConfig extends Config(
   new WithNExtTopInterrupts(0)   ++
-  new U500PolarFireEvalKitPeripherals ++
-  new FreedomUPolarFireEvalKitConfig().alter((site,here,up) => {
+  new U500VC707DevKitPeripherals ++
+  new FreedomUVC707Config().alter((site,here,up) => {
     case ErrorParams => ErrorParams(Seq(AddressSet(0x3000, 0xfff)), maxAtomic=site(XLen)/8, maxTransfer=128)
     case PeripheryBusKey => up(PeripheryBusKey, site).copy(frequency = 50000000) // 50 MHz hperiphery
-    case MemoryMicrosemiDDR3Key => PolarFireEvalKitDDR3Params(address = Seq(AddressSet(0x80000000L,0x40000000L-1))) //1GB
-//    case MemoryMicrosemiDDR4Key => PolarFireEvalKitDDR4Params(address = Seq(AddressSet(0x80000000L,0x40000000L-1))) //1GB
+    case MemoryXilinxDDRKey => XilinxVC707MIGParams(address = Seq(AddressSet(0x80000000L,0x40000000L-1))) //1GB
     case DTSTimebase => BigInt(1000000)
     case ExtMem => up(ExtMem).map(_.copy(size = 0x40000000L))
     case JtagDTMKey => new JtagDTMConfig (
@@ -55,4 +52,3 @@ class U500PolarFireEvalKitConfig extends Config(
       debugIdleCycles = 5)    // Reasonable guess for synchronization
   })
 )
-

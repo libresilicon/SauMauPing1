@@ -21,7 +21,7 @@ JVM_MEMORY ?= 2G
 
 export ROCKETCHIP_ADDONS ?= boom
 
-SBT ?= java -Xmx$(JVM_MEMORY) -Xss8M -XX:MaxPermSize=256M -jar $(base_dir)/rocket-chip/sbt-launch.jar
+SBT ?= java -Xmx$(JVM_MEMORY) -Xss8M -XX:MaxPermSize=256M -jar $(base_dir)/sbt-launch.jar
 SHELL := /bin/bash
 
 FIRRTL_JAR ?= $(base_dir)/rocket-chip/firrtl/utils/bin/firrtl.jar

@@ -19,12 +19,21 @@ lazy val commonSettings = Seq(
 // normal `project in file()` declaration, sbt would ignore all of rocket-chip's
 // build settings, and therefore not understand that it has its own dependencies
 // on chisel, etc.
+
 lazy val rocketChip = RootProject(file("rocket-chip"))
 
 lazy val sifiveBlocks = (project in file("sifive-blocks")).
   dependsOn(rocketChip).
   settings(commonSettings: _*)
 
+lazy val lancevilleBlocks = (project in file("libresilicon-blocks")).
+  dependsOn(sifiveBlocks, rocketChip).
+  settings(commonSettings: _*)
+
+lazy val fpgaWrapper = (project in file("fpga-shells")).
+  dependsOn(lancevilleBlocks, rocketChip, sifiveBlocks).
+  settings(commonSettings: _*)
+
 lazy val freedomPlatforms = (project in file(".")).
-  dependsOn(rocketChip, sifiveBlocks).
+  dependsOn(lancevilleBlocks, fpgaWrapper, rocketChip, sifiveBlocks).
   settings(commonSettings: _*)

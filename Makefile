@@ -1,13 +1,15 @@
 # See LICENSE for license details.
 base_dir := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 BUILD_DIR := $(base_dir)/builds
-#MODEL := U500VC707DevKitFPGAChip
-MODEL := SauMauPing
 PROJECT := libresilicon.soc
 export CONFIG_PROJECT := libresilicon.soc
-#export CONFIG := U500VC707DevKitConfig
-export CONFIG := SauMauPingConfig
-export BOARD := vc707
+
+#MODEL := SauMauPingASIC
+MODEL := SauMauPingMIA702
+
+#export CONFIG := SauMauPingASICConfig
+export CONFIG := SauMauPingMIA702Config
+
 export BOOTROM_DIR := $(base_dir)/bootrom/sdboot
 
 rocketchip_dir := $(base_dir)/rocket-chip

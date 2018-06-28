@@ -11,11 +11,13 @@ import sifive.blocks.devices.gpio._
 import sifive.blocks.devices.spi._
 import sifive.blocks.devices.uart._
 
+//import libresilicon.soc.dram._
+
 class SauMauPingSystem(implicit p: Parameters) extends RocketSubsystem
 	with HasPeripheryUART
 	with HasPeripherySPI
 	with HasPeripheryGPIO
-	//with HasPeripheryMaskROMSlave
+//	with HasPeripheryDRAM
 	with HasAsyncExtInterrupts
 	with CanHaveMasterAXI4MemPort
 	with CanHaveMasterAXI4MMIOPort
@@ -29,7 +31,7 @@ class SauMauPingSystemModuleImp[+L <: SauMauPingSystem](_outer: L) extends Rocke
 	with HasPeripheryUARTModuleImp
 	with HasPeripherySPIModuleImp
 	with HasPeripheryGPIOModuleImp
-	//with HasPeripheryBootROMModuleImp
+//	with HasPeripheryDRAMImp
 	with HasRTCModuleImp
 	with HasExtInterruptsModuleImp
 	with CanHaveMasterAXI4MemPortModuleImp

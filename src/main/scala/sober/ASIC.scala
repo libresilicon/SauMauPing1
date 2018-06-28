@@ -13,7 +13,7 @@ import sifive.blocks.devices.pinctrl.{BasePin}
 import freechips.rocketchip.config.Parameters
 import freechips.rocketchip.diplomacy.LazyModule
 
-class SauMauPing()(implicit p: Parameters) extends PadFrame {
+class SauMauPingASIC()(implicit p: Parameters) extends PadFrame {
   val dut = Module(LazyModule(new SauMauPingSystem).module)
   dut.reset := reset
   connectUART(dut)

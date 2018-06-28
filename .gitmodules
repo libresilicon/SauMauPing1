@@ -16,6 +16,3 @@
 [submodule "fpga-shells"]
 	path = fpga-shells
 	url = https://github.com/libresilicon/fpga-shells.git
-[submodule "sbt-pack"]
-	path = sbt-pack
-	url = https://github.com/xerial/sbt-pack.git

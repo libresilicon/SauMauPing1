@@ -4,7 +4,7 @@
 		module="soc_2.11"
 		revision="0.1.0"
 		status="integration"
-		publication="20180628022051"
+		publication="20180628212702"
 	>
 		<description>
 		soc
@@ -32,6 +32,8 @@
 	<dependencies>
 		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.12" conf="scala-tool->default,optional(default)"/>
 		<dependency org="org.scala-lang" name="scala-library" rev="2.11.12" conf="scala-tool->default,optional(default);compile->default(compile)"/>
+		<dependency org="lancevilleblocks" name="lancevilleblocks_2.11" rev="0.1.0-SNAPSHOT" conf="compile->default(compile)"/>
+		<dependency org="fpgawrapper" name="fpgawrapper_2.11" rev="0.1.0-SNAPSHOT" conf="compile->default(compile)"/>
 		<dependency org="berkeley" name="rocketchip_2.11" rev="1.2" conf="compile->default(compile)"/>
 		<dependency org="sifiveblocks" name="sifiveblocks_2.11" rev="0.1.0-SNAPSHOT" conf="compile->default(compile)"/>
 	</dependencies>

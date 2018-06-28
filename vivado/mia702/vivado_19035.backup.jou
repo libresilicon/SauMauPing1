@@ -1,0 +1,43 @@
+#-----------------------------------------------------------
+# Vivado v2018.1 (64-bit)
+# SW Build 2188600 on Wed Apr  4 18:39:19 MDT 2018
+# IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+# Start of session at: Wed Jun 27 18:28:40 2018
+# Process ID: 19035
+# Current directory: /home/leviathan/SauMauPing1/vivado/mia702
+# Command line: vivado mia702.xpr
+# Log file: /home/leviathan/SauMauPing1/vivado/mia702/vivado.log
+# Journal file: /home/leviathan/SauMauPing1/vivado/mia702/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project mia702.xpr
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files /home/leviathan/SauMauPing1/fpga-shells/xilinx/vc707/vsrc/vc707reset.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files /home/leviathan/SauMauPing1/fpga-shells/xilinx/common/vsrc/PowerOnResetFPGAOnly.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files /home/leviathan/SauMauPing1/fpga-shells/xilinx/vc707/vsrc/sdio.v] -no_script -reset -force -quiet
+remove_files  {/home/leviathan/SauMauPing1/fpga-shells/xilinx/vc707/vsrc/vc707reset.v /home/leviathan/SauMauPing1/fpga-shells/xilinx/common/vsrc/PowerOnResetFPGAOnly.v /home/leviathan/SauMauPing1/fpga-shells/xilinx/vc707/vsrc/sdio.v}
+export_ip_user_files -of_objects  [get_files /home/leviathan/SauMauPing1/rocket-chip/src/main/resources/vsrc/AsyncResetReg.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files /home/leviathan/SauMauPing1/rocket-chip/src/main/resources/vsrc/ClockDivider2.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files /home/leviathan/SauMauPing1/rocket-chip/src/main/resources/vsrc/ClockDivider3.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files /home/leviathan/SauMauPing1/rocket-chip/src/main/resources/vsrc/plusarg_reader.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files /home/leviathan/SauMauPing1/builds/u500vc707devkit/sifive.freedom.unleashed.u500vc707devkit.U500VC707DevKitConfig.v] -no_script -reset -force -quiet
+remove_files  {/home/leviathan/SauMauPing1/rocket-chip/src/main/resources/vsrc/AsyncResetReg.v /home/leviathan/SauMauPing1/rocket-chip/src/main/resources/vsrc/ClockDivider2.v /home/leviathan/SauMauPing1/rocket-chip/src/main/resources/vsrc/ClockDivider3.v /home/leviathan/SauMauPing1/rocket-chip/src/main/resources/vsrc/plusarg_reader.v /home/leviathan/SauMauPing1/builds/u500vc707devkit/sifive.freedom.unleashed.u500vc707devkit.U500VC707DevKitConfig.v}
+update_compile_order -fileset sources_1
+add_files -norecurse /home/leviathan/SauMauPing1/rocket-chip/vsim/generated-src/freechips.rocketchip.system.BOOMConfig.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top ExampleRocketSystem [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+synth_design -rtl -name rtl_1
+add_files -norecurse {/home/leviathan/SauMauPing1/rocket-chip/vsrc/ClockDivider2.v /home/leviathan/SauMauPing1/rocket-chip/vsrc/ClockDivider3.v /home/leviathan/SauMauPing1/rocket-chip/vsrc/TestDriver.v /home/leviathan/SauMauPing1/rocket-chip/vsrc/AsyncResetReg.v /home/leviathan/SauMauPing1/rocket-chip/vsrc/plusarg_reader.v /home/leviathan/SauMauPing1/rocket-chip/vsrc/jtag_vpi.v /home/leviathan/SauMauPing1/rocket-chip/vsrc/SimDTM.v}
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files /home/leviathan/SauMauPing1/rocket-chip/vsrc/TestDriver.v] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files /home/leviathan/SauMauPing1/rocket-chip/vsrc/SimDTM.v] -no_script -reset -force -quiet
+remove_files  {/home/leviathan/SauMauPing1/rocket-chip/vsrc/TestDriver.v /home/leviathan/SauMauPing1/rocket-chip/vsrc/SimDTM.v}
+synth_design -rtl -name rtl_1
+add_files -norecurse /home/leviathan/SauMauPing1/rocket-chip/vsim/generated-src/freechips.rocketchip.system.BOOMConfig.behav_srams.v
+update_compile_order -fileset sources_1
+synth_design -rtl -name rtl_1

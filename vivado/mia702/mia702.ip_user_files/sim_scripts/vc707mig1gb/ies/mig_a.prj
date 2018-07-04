@@ -28,7 +28,7 @@
         <TimePeriod>2500</TimePeriod>
         <VccAuxIO>1.8V</VccAuxIO>
         <PHYRatio>4:1</PHYRatio>
-        <InputClkFreq>200</InputClkFreq>
+        <InputClkFreq>800</InputClkFreq>
         <UIExtraClocks>0</UIExtraClocks>
         <MMCM_VCO>800</MMCM_VCO>
         <MMCMClkOut0> 1.000</MMCMClkOut0>
@@ -124,7 +124,7 @@
         <System_Control>
             <Pin PADName="No connect" Bank="Select Bank" name="sys_rst" />
             <Pin PADName="No connect" Bank="Select Bank" name="init_calib_complete" />
-            <Pin PADName="K16" Bank="15" name="tg_compare_error" />
+            <Pin PADName="No connect" Bank="Select Bank" name="tg_compare_error" />
         </System_Control>
         <TimingParameters>
             <Parameters twtr="7.5" trrd="7.5" trefi="7.8" tfaw="45" trtp="7.5" tcke="5.625" trfc="160" trp="13.5" tras="36" trcd="13.5" />
@@ -136,10 +136,10 @@
         <mrDllReset name="DLL Reset" >No</mrDllReset>
         <mrPdMode name="DLL control for precharge PD" >Slow Exit</mrPdMode>
         <emrDllEnable name="DLL Enable" >Enable</emrDllEnable>
-        <emrOutputDriveStrength name="Output Driver Impedance Control" >RZQ/7</emrOutputDriveStrength>
+        <emrOutputDriveStrength name="Output Driver Impedance Control" >RZQ/6</emrOutputDriveStrength>
         <emrMirrorSelection name="Address Mirroring" >Disable</emrMirrorSelection>
         <emrCSSelection name="Controller Chip Select Pin" >Enable</emrCSSelection>
-        <emrRTT name="RTT (nominal) - On Die Termination (ODT)" >RZQ/4</emrRTT>
+        <emrRTT name="RTT (nominal) - On Die Termination (ODT)" >RZQ/6</emrRTT>
         <emrPosted name="Additive Latency (AL)" >0</emrPosted>
         <emrOCD name="Write Leveling Enable" >Disabled</emrOCD>
         <emrDQS name="TDQS enable" >Enabled</emrDQS>
@@ -153,7 +153,7 @@
         <AXIParameters>
             <C0_C_RD_WR_ARB_ALGORITHM>RD_PRI_REG</C0_C_RD_WR_ARB_ALGORITHM>
             <C0_S_AXI_ADDR_WIDTH>29</C0_S_AXI_ADDR_WIDTH>
-            <C0_S_AXI_DATA_WIDTH>256</C0_S_AXI_DATA_WIDTH>
+            <C0_S_AXI_DATA_WIDTH>64</C0_S_AXI_DATA_WIDTH>
             <C0_S_AXI_ID_WIDTH>4</C0_S_AXI_ID_WIDTH>
             <C0_S_AXI_SUPPORTS_NARROW_BURST>0</C0_S_AXI_SUPPORTS_NARROW_BURST>
         </AXIParameters>

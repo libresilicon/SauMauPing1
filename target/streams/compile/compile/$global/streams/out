@@ -1,4 +1,0 @@
-[0m[[0m[31merror[0m] [0m[0m/home/leviathan/SauMauPing1/src/main/scala/addicted/mia702/System.scala:46:26: not found: value maskROMParams[0m
-[0m[[0m[31merror[0m] [0m[0m  global_reset_vector := maskROMParams(0).address.U[0m
-[0m[[0m[31merror[0m] [0m[0m                         ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m

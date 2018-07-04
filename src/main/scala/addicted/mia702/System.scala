@@ -13,35 +13,29 @@ import sifive.blocks.devices.gpio._
 import sifive.blocks.devices.spi._
 import sifive.blocks.devices.uart._
 
-import sifive.fpgashells.devices.xilinx.xilinxvc707mig._
-import sifive.fpgashells.devices.xilinx.xilinxvc707pciex1._
-
-//-------------------------------------------------------------------------
-// U500VC707DevKitSystem
-//-------------------------------------------------------------------------
+import sifive.fpgashells.devices.xilinx.xilinxmia702mig._
 
 class SayMauPingMIA702System(implicit p: Parameters) extends RocketSubsystem
-    //with HasPeripheryMaskROMSlave
-    with HasPeripheryDebug
-    with HasSystemErrorSlave
+    with HasPeripheryMaskROMSlave
     with HasPeripheryUART
     with HasPeripherySPI
+    with HasPeripherySPIFlash
     with HasPeripheryGPIO
-    with HasMemoryXilinxVC707MIG {
-    //with HasSystemXilinxVC707PCIeX1 {
-  override lazy val module = new SayMauPingMIA702SystemModule(this)
+    with HasMemoryXilinxMIA702MIG
+    {
+      override lazy val module = new SayMauPingMIA702SystemModule(this)
 }
 
 class SayMauPingMIA702SystemModule[+L <: SayMauPingMIA702System](_outer: L)
   extends RocketSubsystemModuleImp(_outer)
-    //with HasRTCModuleImp
-    with HasPeripheryDebugModuleImp
+    with HasRTCModuleImp
     with HasPeripheryUARTModuleImp
     with HasPeripherySPIModuleImp
     with HasPeripheryGPIOModuleImp
-    with HasMemoryXilinxVC707MIGModuleImp {
-    //with HasSystemXilinxVC707PCIeX1ModuleImp {
-  // Reset vector is set to the location of the mask rom
-  //val maskROMParams = p(PeripheryMaskROMKey)
-  //global_reset_vector := maskROMParams(0).address.U
+    with HasPeripherySPIFlashModuleImp
+    with HasMemoryXilinxMIA702MIGModuleImp
+    {
+      // Reset vector is set to the location of the mask rom
+      val maskROMParams = p(PeripheryMaskROMKey)
+      global_reset_vector := maskROMParams(0).address.U
 }

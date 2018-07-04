@@ -9,7 +9,7 @@ import freechips.rocketchip.diplomacy._
 import sifive.blocks.devices.gpio._
 import sifive.blocks.devices.pinctrl.{BasePin}
 
-import sifive.fpgashells.shell.xilinx.vc707shell._
+import sifive.fpgashells.shell.xilinx.mia702shell._
 import sifive.fpgashells.ip.xilinx.{IOBUF}
 
 //-------------------------------------------------------------------------
@@ -27,28 +27,26 @@ object PinGen {
 //-------------------------------------------------------------------------
 
 class SauMauPingMIA702(implicit override val p: Parameters)
-    extends VC707Shell
-    //with HasPCIe
+    extends MIA702Shell
+    with HasSDIO 
     with HasDDR3
-    with HasDebugJTAG {
+    {
 
   //-----------------------------------------------------------------------
   // DUT
   //-----------------------------------------------------------------------
 
   // Connect the clock to the 50 Mhz output from the PLL
-  dut_clock := clk50
+  dut_clock := clk500
   withClockAndReset(dut_clock, dut_reset) {
     val dut = Module(LazyModule(new SayMauPingMIA702System).module)
 
     //---------------------------------------------------------------------
     // Connect peripherals
     //---------------------------------------------------------------------
-
-    connectDebugJTAG(dut)
+    connectSPIFlash (dut)
     connectSPI      (dut)
     connectUART     (dut)
-    //connectPCIe     (dut)
     connectMIG      (dut)
 
     //---------------------------------------------------------------------
@@ -62,11 +60,10 @@ class SauMauPingMIA702(implicit override val p: Parameters)
 
     gpio_pins.pins.foreach { _.i.ival := Bool(false) }
     gpio_pins.pins.zipWithIndex.foreach {
-      case(pin, idx) => led(idx) := pin.o.oval
+      case(pin, idx) => gpio_leds(idx) := pin.o.oval
     }
 
     // tie to zero
-    for( idx <- 7 to 4 ) { led(idx) := false.B }
+    //for( idx <- 7 to 4 ) { led(idx) := false.B }
   }
-
 }

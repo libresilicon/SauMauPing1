@@ -1,5 +1,5 @@
 
-# file: vc707_sys_clock_mmcm2_ooc.xdc
+# file: clk_wiz_0_ooc.xdc
 # 
 # (c) Copyright 2008 - 2013 Xilinx, Inc. All rights reserved.
 # 
@@ -54,5 +54,5 @@
 ############################################################
 # Clock Period Constraints                                 #
 ############################################################
-#create_clock -period 10.000 [get_ports clk_in1]
+#create_clock -period 8.000 [get_ports clk_in1]
 

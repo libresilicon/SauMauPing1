@@ -1,5 +1,5 @@
 
-// file: vc707_sys_clock_mmcm2.v
+// file: clk_wiz_0.v
 // 
 // (c) Copyright 2008 - 2013 Xilinx, Inc. All rights reserved.
 // 
@@ -56,43 +56,28 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out1___500.000______0.000______50.0_______97.082_____98.575
-// clk_out2___500.000______0.000______50.0_______97.082_____98.575
-// clk_out3___500.000______0.000______50.0_______97.082_____98.575
-// clk_out4___500.000______0.000______50.0_______97.082_____98.575
-// clk_out5___500.000______0.000______50.0_______97.082_____98.575
-// clk_out6___500.000______0.000______50.0_______97.082_____98.575
-// clk_out7___500.000______0.000______50.0_______97.082_____98.575
+// clk_out1___600.000______0.000______50.0______138.255____222.305
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
 //----------------------------------------------------------------------------
-// __primary_________100.000____________0.010
+// __primary_________125.000____________0.010
 
 `timescale 1ps/1ps
 
-module vc707_sys_clock_mmcm2_clk_wiz 
+module clk_wiz_0_clk_wiz 
 
  (// Clock in ports
   // Clock out ports
   output        clk_out1,
-  output        clk_out2,
-  output        clk_out3,
-  output        clk_out4,
-  output        clk_out5,
-  output        clk_out6,
-  output        clk_out7,
-  // Status and control signals
-  input         reset,
-  output        locked,
   input         clk_in1
  );
   // Input buffering
   //------------------------------------
-wire clk_in1_vc707_sys_clock_mmcm2;
-wire clk_in2_vc707_sys_clock_mmcm2;
+wire clk_in1_clk_wiz_0;
+wire clk_in2_clk_wiz_0;
   IBUF clkin1_ibufg
-   (.O (clk_in1_vc707_sys_clock_mmcm2),
+   (.O (clk_in1_clk_wiz_0),
     .I (clk_in1));
 
 
@@ -105,86 +90,54 @@ wire clk_in2_vc707_sys_clock_mmcm2;
   //    * Unused inputs are tied off
   //    * Unused outputs are labeled unused
 
-  wire        clk_out1_vc707_sys_clock_mmcm2;
-  wire        clk_out2_vc707_sys_clock_mmcm2;
-  wire        clk_out3_vc707_sys_clock_mmcm2;
-  wire        clk_out4_vc707_sys_clock_mmcm2;
-  wire        clk_out5_vc707_sys_clock_mmcm2;
-  wire        clk_out6_vc707_sys_clock_mmcm2;
-  wire        clk_out7_vc707_sys_clock_mmcm2;
+  wire        clk_out1_clk_wiz_0;
+  wire        clk_out2_clk_wiz_0;
+  wire        clk_out3_clk_wiz_0;
+  wire        clk_out4_clk_wiz_0;
+  wire        clk_out5_clk_wiz_0;
+  wire        clk_out6_clk_wiz_0;
+  wire        clk_out7_clk_wiz_0;
 
   wire [15:0] do_unused;
   wire        drdy_unused;
   wire        psdone_unused;
   wire        locked_int;
-  wire        clkfbout_vc707_sys_clock_mmcm2;
-  wire        clkfbout_buf_vc707_sys_clock_mmcm2;
+  wire        clkfbout_clk_wiz_0;
+  wire        clkfbout_buf_clk_wiz_0;
   wire        clkfboutb_unused;
-    wire clkout0b_unused;
-   wire clkout1b_unused;
-   wire clkout2b_unused;
-   wire clkout3b_unused;
+   wire clkout1_unused;
+   wire clkout2_unused;
+   wire clkout3_unused;
+   wire clkout4_unused;
+  wire        clkout5_unused;
+  wire        clkout6_unused;
   wire        clkfbstopped_unused;
   wire        clkinstopped_unused;
-  wire        reset_high;
 
-  MMCME2_ADV
+  PLLE2_ADV
   #(.BANDWIDTH            ("OPTIMIZED"),
-    .CLKOUT4_CASCADE      ("FALSE"),
     .COMPENSATION         ("ZHOLD"),
     .STARTUP_WAIT         ("FALSE"),
-    .DIVCLK_DIVIDE        (1),
-    .CLKFBOUT_MULT_F      (10.000),
+    .DIVCLK_DIVIDE        (5),
+    .CLKFBOUT_MULT        (48),
     .CLKFBOUT_PHASE       (0.000),
-    .CLKFBOUT_USE_FINE_PS ("FALSE"),
-    .CLKOUT0_DIVIDE_F     (2.000),
+    .CLKOUT0_DIVIDE       (2),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
-    .CLKOUT0_USE_FINE_PS  ("FALSE"),
-    .CLKOUT1_DIVIDE       (2),
-    .CLKOUT1_PHASE        (0.000),
-    .CLKOUT1_DUTY_CYCLE   (0.500),
-    .CLKOUT1_USE_FINE_PS  ("FALSE"),
-    .CLKOUT2_DIVIDE       (2),
-    .CLKOUT2_PHASE        (0.000),
-    .CLKOUT2_DUTY_CYCLE   (0.500),
-    .CLKOUT2_USE_FINE_PS  ("FALSE"),
-    .CLKOUT3_DIVIDE       (2),
-    .CLKOUT3_PHASE        (0.000),
-    .CLKOUT3_DUTY_CYCLE   (0.500),
-    .CLKOUT3_USE_FINE_PS  ("FALSE"),
-    .CLKOUT4_DIVIDE       (2),
-    .CLKOUT4_PHASE        (0.000),
-    .CLKOUT4_DUTY_CYCLE   (0.500),
-    .CLKOUT4_USE_FINE_PS  ("FALSE"),
-    .CLKOUT5_DIVIDE       (2),
-    .CLKOUT5_PHASE        (0.000),
-    .CLKOUT5_DUTY_CYCLE   (0.500),
-    .CLKOUT5_USE_FINE_PS  ("FALSE"),
-    .CLKOUT6_DIVIDE       (2),
-    .CLKOUT6_PHASE        (0.000),
-    .CLKOUT6_DUTY_CYCLE   (0.500),
-    .CLKOUT6_USE_FINE_PS  ("FALSE"),
-    .CLKIN1_PERIOD        (10.000))
-  mmcm_adv_inst
+    .CLKIN1_PERIOD        (8.000))
+  plle2_adv_inst
     // Output clocks
    (
-    .CLKFBOUT            (clkfbout_vc707_sys_clock_mmcm2),
-    .CLKFBOUTB           (clkfboutb_unused),
-    .CLKOUT0             (clk_out1_vc707_sys_clock_mmcm2),
-    .CLKOUT0B            (clkout0b_unused),
-    .CLKOUT1             (clk_out2_vc707_sys_clock_mmcm2),
-    .CLKOUT1B            (clkout1b_unused),
-    .CLKOUT2             (clk_out3_vc707_sys_clock_mmcm2),
-    .CLKOUT2B            (clkout2b_unused),
-    .CLKOUT3             (clk_out4_vc707_sys_clock_mmcm2),
-    .CLKOUT3B            (clkout3b_unused),
-    .CLKOUT4             (clk_out5_vc707_sys_clock_mmcm2),
-    .CLKOUT5             (clk_out6_vc707_sys_clock_mmcm2),
-    .CLKOUT6             (clk_out7_vc707_sys_clock_mmcm2),
+    .CLKFBOUT            (clkfbout_clk_wiz_0),
+    .CLKOUT0             (clk_out1_clk_wiz_0),
+    .CLKOUT1             (clkout1_unused),
+    .CLKOUT2             (clkout2_unused),
+    .CLKOUT3             (clkout3_unused),
+    .CLKOUT4             (clkout4_unused),
+    .CLKOUT5             (clkout5_unused),
      // Input clock control
-    .CLKFBIN             (clkfbout_buf_vc707_sys_clock_mmcm2),
-    .CLKIN1              (clk_in1_vc707_sys_clock_mmcm2),
+    .CLKFBIN             (clkfbout_buf_clk_wiz_0),
+    .CLKIN1              (clk_in1_clk_wiz_0),
     .CLKIN2              (1'b0),
      // Tied to always select the primary input clock
     .CLKINSEL            (1'b1),
@@ -196,28 +149,19 @@ wire clk_in2_vc707_sys_clock_mmcm2;
     .DO                  (do_unused),
     .DRDY                (drdy_unused),
     .DWE                 (1'b0),
-    // Ports for dynamic phase shift
-    .PSCLK               (1'b0),
-    .PSEN                (1'b0),
-    .PSINCDEC            (1'b0),
-    .PSDONE              (psdone_unused),
     // Other control and status signals
     .LOCKED              (locked_int),
-    .CLKINSTOPPED        (clkinstopped_unused),
-    .CLKFBSTOPPED        (clkfbstopped_unused),
     .PWRDWN              (1'b0),
-    .RST                 (reset_high));
-  assign reset_high = reset; 
+    .RST                 (1'b0));
 
-  assign locked = locked_int;
 // Clock Monitor clock assigning
 //--------------------------------------
  // Output buffering
   //-----------------------------------
 
   BUFG clkf_buf
-   (.O (clkfbout_buf_vc707_sys_clock_mmcm2),
-    .I (clkfbout_vc707_sys_clock_mmcm2));
+   (.O (clkfbout_buf_clk_wiz_0),
+    .I (clkfbout_clk_wiz_0));
 
 
 
@@ -226,32 +170,8 @@ wire clk_in2_vc707_sys_clock_mmcm2;
 
   BUFG clkout1_buf
    (.O   (clk_out1),
-    .I   (clk_out1_vc707_sys_clock_mmcm2));
+    .I   (clk_out1_clk_wiz_0));
 
-
-  BUFG clkout2_buf
-   (.O   (clk_out2),
-    .I   (clk_out2_vc707_sys_clock_mmcm2));
-
-  BUFG clkout3_buf
-   (.O   (clk_out3),
-    .I   (clk_out3_vc707_sys_clock_mmcm2));
-
-  BUFG clkout4_buf
-   (.O   (clk_out4),
-    .I   (clk_out4_vc707_sys_clock_mmcm2));
-
-  BUFG clkout5_buf
-   (.O   (clk_out5),
-    .I   (clk_out5_vc707_sys_clock_mmcm2));
-
-  BUFG clkout6_buf
-   (.O   (clk_out6),
-    .I   (clk_out6_vc707_sys_clock_mmcm2));
-
-  BUFG clkout7_buf
-   (.O   (clk_out7),
-    .I   (clk_out7_vc707_sys_clock_mmcm2));
 
 
 

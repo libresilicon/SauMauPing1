@@ -143,11 +143,11 @@ module example_top #
    // The following parameters are multiplier and divisor factors for PLLE2.
    // Based on the selected design frequency these parameters vary.
    //***************************************************************************
-   parameter CLKIN_PERIOD          = 5000,
+   parameter CLKIN_PERIOD          = 1250,
                                      // Input Clock Period
-   parameter CLKFBOUT_MULT         = 4,
+   parameter CLKFBOUT_MULT         = 2,
                                      // write PLL VCO multiplier
-   parameter DIVCLK_DIVIDE         = 1,
+   parameter DIVCLK_DIVIDE         = 2,
                                      // write PLL VCO divisor
    parameter CLKOUT0_PHASE         = 0.0,
                                      // Phase for PLL output clock (CLKOUT0)
@@ -198,7 +198,7 @@ module example_top #
                                              // Width of S_AXI_AWADDR, S_AXI_ARADDR, M_AXI_AWADDR and
                                              // M_AXI_ARADDR for all SI/MI slots.
                                              // # = 32.
-   parameter C_S_AXI_DATA_WIDTH            = 256,
+   parameter C_S_AXI_DATA_WIDTH            = 64,
                                              // Width of WDATA and RDATA on SI slot.
                                              // Must be <= APP_DATA_WIDTH.
                                              // # = 32, 64, 128, 256.

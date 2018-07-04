@@ -1,0 +1,1 @@
+/home/leviathan/SauMauPing1/rocket-chip/src/main/resources/vsrc/AsyncResetReg.v /home/leviathan/SauMauPing1/rocket-chip/src/main/resources/vsrc/plusarg_reader.v /home/leviathan/SauMauPing1/sifive-blocks/vsrc/SRLatch.v /home/leviathan/SauMauPing1/builds/libresilicon.soc.SauMauPingMIA702Config.rom.v /home/leviathan/SauMauPing1/builds/libresilicon.soc.SauMauPingMIA702Config.v

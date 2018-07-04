@@ -55,18 +55,12 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out1___500.000______0.000______50.0_______97.082_____98.575
-// clk_out2___500.000______0.000______50.0_______97.082_____98.575
-// clk_out3___500.000______0.000______50.0_______97.082_____98.575
-// clk_out4___500.000______0.000______50.0_______97.082_____98.575
-// clk_out5___500.000______0.000______50.0_______97.082_____98.575
-// clk_out6___500.000______0.000______50.0_______97.082_____98.575
-// clk_out7___500.000______0.000______50.0_______97.082_____98.575
+// clk_out1___400.000______0.000______50.0_______95.937_____96.948
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
 //----------------------------------------------------------------------------
-// __primary_________100.000____________0.010
+// __primary_____________125____________0.010
 
 // The following must be inserted into your Verilog file for this
 // core to be instantiated. Change the instance name and port connections
@@ -74,16 +68,10 @@
 
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 
-  vc707_sys_clock_mmcm2 instance_name
+  sys_clock_mmcm2 instance_name
    (
     // Clock out ports
     .clk_out1(clk_out1),     // output clk_out1
-    .clk_out2(clk_out2),     // output clk_out2
-    .clk_out3(clk_out3),     // output clk_out3
-    .clk_out4(clk_out4),     // output clk_out4
-    .clk_out5(clk_out5),     // output clk_out5
-    .clk_out6(clk_out6),     // output clk_out6
-    .clk_out7(clk_out7),     // output clk_out7
     // Status and control signals
     .reset(reset), // input reset
     .locked(locked),       // output locked

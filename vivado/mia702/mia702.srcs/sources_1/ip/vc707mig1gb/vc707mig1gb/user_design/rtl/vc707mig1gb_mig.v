@@ -197,11 +197,11 @@ module vc707mig1gb_mig #
                                      // in number of clock cycles
                                      // DDR3 SDRAM: CAS Write Latency (Mode Register 2).
                                      // DDR2 SDRAM: Can be ignored
-   parameter OUTPUT_DRV            = "HIGH",
+   parameter OUTPUT_DRV            = "LOW",
                                      // Output Driver Impedance Control (Mode Register 1).
                                      // # = "HIGH" - RZQ/7,
                                      //   = "LOW" - RZQ/6.
-   parameter RTT_NOM               = "60",
+   parameter RTT_NOM               = "40",
                                      // RTT_NOM (ODT) (Mode Register 1).
                                      //   = "120" - RZQ/2,
                                      //   = "60"  - RZQ/4,
@@ -228,11 +228,11 @@ module vc707mig1gb_mig #
    // The following parameters are multiplier and divisor factors for PLLE2.
    // Based on the selected design frequency these parameters vary.
    //***************************************************************************
-   parameter CLKIN_PERIOD          = 5000,
+   parameter CLKIN_PERIOD          = 1250,
                                      // Input Clock Period
-   parameter CLKFBOUT_MULT         = 4,
+   parameter CLKFBOUT_MULT         = 2,
                                      // write PLL VCO multiplier
-   parameter DIVCLK_DIVIDE         = 1,
+   parameter DIVCLK_DIVIDE         = 2,
                                      // write PLL VCO divisor
    parameter CLKOUT0_PHASE         = 0.0,
                                      // Phase for PLL output clock (CLKOUT0)
@@ -485,7 +485,7 @@ module vc707mig1gb_mig #
                                              // Width of S_AXI_AWADDR, S_AXI_ARADDR, M_AXI_AWADDR and
                                              // M_AXI_ARADDR for all SI/MI slots.
                                              // # = 32.
-   parameter C_S_AXI_DATA_WIDTH            = 256,
+   parameter C_S_AXI_DATA_WIDTH            = 64,
                                              // Width of WDATA and RDATA on SI slot.
                                              // Must be <= APP_DATA_WIDTH.
                                              // # = 32, 64, 128, 256.

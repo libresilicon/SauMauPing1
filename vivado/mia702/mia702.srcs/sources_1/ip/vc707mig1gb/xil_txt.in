@@ -9,8 +9,8 @@ SET_PREFERENCE package fgg484
 SET_PREFERENCE verilogsim true
 SET_PREFERENCE vhdlsim false
 SET_PREFERENCE designentry Verilog
-SET_PREFERENCE outputdirectory /home/leviathan/SauMauPing1/vivado/mia702/.Xil/Vivado-10983-dizzy-7/coregen/vc707mig1gb/_tmp/
-SET_PREFERENCE subworkingdirectory /home/leviathan/SauMauPing1/vivado/mia702/.Xil/Vivado-10983-dizzy-7/coregen/vc707mig1gb/_tmp/
+SET_PREFERENCE outputdirectory /home/leviathan/SauMauPing1/vivado/mia702/.Xil/Vivado-8887-dizzy-7/coregen/vc707mig1gb/_tmp/
+SET_PREFERENCE subworkingdirectory /home/leviathan/SauMauPing1/vivado/mia702/.Xil/Vivado-8887-dizzy-7/coregen/vc707mig1gb/_tmp/
 SET_PREFERENCE flowvendor Other
 SET_PREFERENCE tool vivado
 SET_PREFERENCE compnamestatus 0

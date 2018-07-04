@@ -225,26 +225,6 @@
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_45",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_46",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_47",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_48",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
     "class":"freechips.rocketchip.util.ParamsAnnotation",
     "target":"SauMauPingMIA702.TLPLIC",
     "paramsClassName":"freechips.rocketchip.devices.tilelink.PLICParams",
@@ -362,6 +342,24 @@
           "wrType":"None",
           "rdAction":"None",
           "desc":"Acting priority of interrupt source 6",
+          "group":"priority",
+          "groupDesc":"Acting priorities of each interrupt source.",
+          "volatile":false,
+          "hasReset":false,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x1c",
+          "bitOffset":0,
+          "bitWidth":3,
+          "name":"priority_7",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Acting priority of interrupt source 7",
           "group":"priority",
           "groupDesc":"Acting priorities of each interrupt source.",
           "volatile":false,
@@ -497,6 +495,24 @@
           }
         },
         {
+          "byteOffset":"0x1000",
+          "bitOffset":7,
+          "bitWidth":1,
+          "name":"pending_7",
+          "resetValue":0,
+          "accessType":"R",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Set to 1 if interrupt source 7 is pending, regardless of its enable or priority setting.",
+          "group":"pending",
+          "groupDesc":"Pending Bit Array. 1 Bit for each interrupt source.",
+          "volatile":true,
+          "hasReset":false,
+          "enumerations":{
+            
+          }
+        },
+        {
           "byteOffset":"0x2000",
           "bitOffset":0,
           "bitWidth":1,
@@ -517,13 +533,13 @@
         {
           "byteOffset":"0x2000",
           "bitOffset":1,
-          "bitWidth":6,
+          "bitWidth":7,
           "name":"enables_0",
           "resetValue":0,
           "accessType":"RW",
           "wrType":"None",
           "rdAction":"None",
-          "desc":"Targets 1-6. Set bits to 1 if interrupt should be enabled.",
+          "desc":"Targets 1-7. Set bits to 1 if interrupt should be enabled.",
           "group":"enables_0",
           "groupDesc":"Enable bits for each interrupt source for target 0. 1 bit for each interrupt source.",
           "volatile":false,
@@ -553,231 +569,15 @@
         {
           "byteOffset":"0x2080",
           "bitOffset":1,
-          "bitWidth":6,
+          "bitWidth":7,
           "name":"enables_0",
           "resetValue":0,
           "accessType":"RW",
           "wrType":"None",
           "rdAction":"None",
-          "desc":"Targets 1-6. Set bits to 1 if interrupt should be enabled.",
+          "desc":"Targets 1-7. Set bits to 1 if interrupt should be enabled.",
           "group":"enables_1",
           "groupDesc":"Enable bits for each interrupt source for target 1. 1 bit for each interrupt source.",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x2100",
-          "bitOffset":0,
-          "bitWidth":1,
-          "name":"reserved",
-          "resetValue":0,
-          "accessType":"R",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x2100",
-          "bitOffset":1,
-          "bitWidth":6,
-          "name":"enables_0",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"Targets 1-6. Set bits to 1 if interrupt should be enabled.",
-          "group":"enables_2",
-          "groupDesc":"Enable bits for each interrupt source for target 2. 1 bit for each interrupt source.",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x2180",
-          "bitOffset":0,
-          "bitWidth":1,
-          "name":"reserved",
-          "resetValue":0,
-          "accessType":"R",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x2180",
-          "bitOffset":1,
-          "bitWidth":6,
-          "name":"enables_0",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"Targets 1-6. Set bits to 1 if interrupt should be enabled.",
-          "group":"enables_3",
-          "groupDesc":"Enable bits for each interrupt source for target 3. 1 bit for each interrupt source.",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x2200",
-          "bitOffset":0,
-          "bitWidth":1,
-          "name":"reserved",
-          "resetValue":0,
-          "accessType":"R",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x2200",
-          "bitOffset":1,
-          "bitWidth":6,
-          "name":"enables_0",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"Targets 1-6. Set bits to 1 if interrupt should be enabled.",
-          "group":"enables_4",
-          "groupDesc":"Enable bits for each interrupt source for target 4. 1 bit for each interrupt source.",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x2280",
-          "bitOffset":0,
-          "bitWidth":1,
-          "name":"reserved",
-          "resetValue":0,
-          "accessType":"R",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x2280",
-          "bitOffset":1,
-          "bitWidth":6,
-          "name":"enables_0",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"Targets 1-6. Set bits to 1 if interrupt should be enabled.",
-          "group":"enables_5",
-          "groupDesc":"Enable bits for each interrupt source for target 5. 1 bit for each interrupt source.",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x2300",
-          "bitOffset":0,
-          "bitWidth":1,
-          "name":"reserved",
-          "resetValue":0,
-          "accessType":"R",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x2300",
-          "bitOffset":1,
-          "bitWidth":6,
-          "name":"enables_0",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"Targets 1-6. Set bits to 1 if interrupt should be enabled.",
-          "group":"enables_6",
-          "groupDesc":"Enable bits for each interrupt source for target 6. 1 bit for each interrupt source.",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x2380",
-          "bitOffset":0,
-          "bitWidth":1,
-          "name":"reserved",
-          "resetValue":0,
-          "accessType":"R",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x2380",
-          "bitOffset":1,
-          "bitWidth":6,
-          "name":"enables_0",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"Targets 1-6. Set bits to 1 if interrupt should be enabled.",
-          "group":"enables_7",
-          "groupDesc":"Enable bits for each interrupt source for target 7. 1 bit for each interrupt source.",
           "volatile":false,
           "hasReset":false,
           "enumerations":{
@@ -891,337 +691,13 @@
           "enumerations":{
             
           }
-        },
-        {
-          "byteOffset":"0x202000",
-          "bitOffset":0,
-          "bitWidth":3,
-          "name":"threshold_2",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"Interrupt & claim threshold for target 2. Maximum value is 7.",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x202000",
-          "bitOffset":3,
-          "bitWidth":29,
-          "name":"reserved",
-          "resetValue":0,
-          "accessType":"R",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x202000",
-          "bitOffset":32,
-          "bitWidth":32,
-          "name":"claim_complete_2",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"Some(MODIFY)",
-          "rdAction":"Some(MODIFY)",
-          "desc":"Claim/Complete register for Target 2. Reading this register returns the claimed interrupt number and makes it no longer pending.Writing the interrupt number back completes the interrupt.",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":true,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x203000",
-          "bitOffset":0,
-          "bitWidth":3,
-          "name":"threshold_3",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"Interrupt & claim threshold for target 3. Maximum value is 7.",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x203000",
-          "bitOffset":3,
-          "bitWidth":29,
-          "name":"reserved",
-          "resetValue":0,
-          "accessType":"R",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x203000",
-          "bitOffset":32,
-          "bitWidth":32,
-          "name":"claim_complete_3",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"Some(MODIFY)",
-          "rdAction":"Some(MODIFY)",
-          "desc":"Claim/Complete register for Target 3. Reading this register returns the claimed interrupt number and makes it no longer pending.Writing the interrupt number back completes the interrupt.",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":true,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x204000",
-          "bitOffset":0,
-          "bitWidth":3,
-          "name":"threshold_4",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"Interrupt & claim threshold for target 4. Maximum value is 7.",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x204000",
-          "bitOffset":3,
-          "bitWidth":29,
-          "name":"reserved",
-          "resetValue":0,
-          "accessType":"R",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x204000",
-          "bitOffset":32,
-          "bitWidth":32,
-          "name":"claim_complete_4",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"Some(MODIFY)",
-          "rdAction":"Some(MODIFY)",
-          "desc":"Claim/Complete register for Target 4. Reading this register returns the claimed interrupt number and makes it no longer pending.Writing the interrupt number back completes the interrupt.",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":true,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x205000",
-          "bitOffset":0,
-          "bitWidth":3,
-          "name":"threshold_5",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"Interrupt & claim threshold for target 5. Maximum value is 7.",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x205000",
-          "bitOffset":3,
-          "bitWidth":29,
-          "name":"reserved",
-          "resetValue":0,
-          "accessType":"R",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x205000",
-          "bitOffset":32,
-          "bitWidth":32,
-          "name":"claim_complete_5",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"Some(MODIFY)",
-          "rdAction":"Some(MODIFY)",
-          "desc":"Claim/Complete register for Target 5. Reading this register returns the claimed interrupt number and makes it no longer pending.Writing the interrupt number back completes the interrupt.",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":true,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x206000",
-          "bitOffset":0,
-          "bitWidth":3,
-          "name":"threshold_6",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"Interrupt & claim threshold for target 6. Maximum value is 7.",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x206000",
-          "bitOffset":3,
-          "bitWidth":29,
-          "name":"reserved",
-          "resetValue":0,
-          "accessType":"R",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x206000",
-          "bitOffset":32,
-          "bitWidth":32,
-          "name":"claim_complete_6",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"Some(MODIFY)",
-          "rdAction":"Some(MODIFY)",
-          "desc":"Claim/Complete register for Target 6. Reading this register returns the claimed interrupt number and makes it no longer pending.Writing the interrupt number back completes the interrupt.",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":true,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x207000",
-          "bitOffset":0,
-          "bitWidth":3,
-          "name":"threshold_7",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"Interrupt & claim threshold for target 7. Maximum value is 7.",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x207000",
-          "bitOffset":3,
-          "bitWidth":29,
-          "name":"reserved",
-          "resetValue":0,
-          "accessType":"R",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x207000",
-          "bitOffset":32,
-          "bitWidth":32,
-          "name":"claim_complete_7",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"Some(MODIFY)",
-          "rdAction":"Some(MODIFY)",
-          "desc":"Claim/Complete register for Target 7. Reading this register returns the claimed interrupt number and makes it no longer pending.Writing the interrupt number back completes the interrupt.",
-          "group":"None",
-          "groupDesc":"None",
-          "volatile":true,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
         }
       ]
     }
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_49",
+    "target":"SauMauPingMIA702.plusarg_reader_45",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
@@ -1253,60 +729,6 @@
           "desc":"MSIP bit for Hart 0",
           "group":"msip",
           "groupDesc":"MSIP Bits",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x0",
-          "bitOffset":32,
-          "bitWidth":32,
-          "name":"msip_1",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"MSIP bit for Hart 1",
-          "group":"msip",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x0",
-          "bitOffset":64,
-          "bitWidth":32,
-          "name":"msip_2",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"MSIP bit for Hart 2",
-          "group":"msip",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":true,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x0",
-          "bitOffset":96,
-          "bitWidth":32,
-          "name":"msip_3",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"MSIP bit for Hart 3",
-          "group":"msip",
-          "groupDesc":"None",
           "volatile":false,
           "hasReset":true,
           "enumerations":{
@@ -1450,438 +872,6 @@
           "rdAction":"None",
           "desc":"",
           "group":"mtimecmp_0",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":64,
-          "bitWidth":8,
-          "name":"mtimecmp_1_0",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_1",
-          "groupDesc":"MTIMECMP for hart 1",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":72,
-          "bitWidth":8,
-          "name":"mtimecmp_1_1",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_1",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":80,
-          "bitWidth":8,
-          "name":"mtimecmp_1_2",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_1",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":88,
-          "bitWidth":8,
-          "name":"mtimecmp_1_3",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_1",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":96,
-          "bitWidth":8,
-          "name":"mtimecmp_1_4",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_1",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":104,
-          "bitWidth":8,
-          "name":"mtimecmp_1_5",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_1",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":112,
-          "bitWidth":8,
-          "name":"mtimecmp_1_6",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_1",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":120,
-          "bitWidth":8,
-          "name":"mtimecmp_1_7",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_1",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":128,
-          "bitWidth":8,
-          "name":"mtimecmp_2_0",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_2",
-          "groupDesc":"MTIMECMP for hart 2",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":136,
-          "bitWidth":8,
-          "name":"mtimecmp_2_1",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_2",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":144,
-          "bitWidth":8,
-          "name":"mtimecmp_2_2",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_2",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":152,
-          "bitWidth":8,
-          "name":"mtimecmp_2_3",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_2",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":160,
-          "bitWidth":8,
-          "name":"mtimecmp_2_4",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_2",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":168,
-          "bitWidth":8,
-          "name":"mtimecmp_2_5",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_2",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":176,
-          "bitWidth":8,
-          "name":"mtimecmp_2_6",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_2",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":184,
-          "bitWidth":8,
-          "name":"mtimecmp_2_7",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_2",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":192,
-          "bitWidth":8,
-          "name":"mtimecmp_3_0",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_3",
-          "groupDesc":"MTIMECMP for hart 3",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":200,
-          "bitWidth":8,
-          "name":"mtimecmp_3_1",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_3",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":208,
-          "bitWidth":8,
-          "name":"mtimecmp_3_2",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_3",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":216,
-          "bitWidth":8,
-          "name":"mtimecmp_3_3",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_3",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":224,
-          "bitWidth":8,
-          "name":"mtimecmp_3_4",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_3",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":232,
-          "bitWidth":8,
-          "name":"mtimecmp_3_5",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_3",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":240,
-          "bitWidth":8,
-          "name":"mtimecmp_3_6",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_3",
-          "groupDesc":"None",
-          "volatile":false,
-          "hasReset":false,
-          "enumerations":{
-            
-          }
-        },
-        {
-          "byteOffset":"0x4000",
-          "bitOffset":248,
-          "bitWidth":8,
-          "name":"mtimecmp_3_7",
-          "resetValue":0,
-          "accessType":"RW",
-          "wrType":"None",
-          "rdAction":"None",
-          "desc":"",
-          "group":"mtimecmp_3",
           "groupDesc":"None",
           "volatile":false,
           "hasReset":false,
@@ -2038,12 +1028,12 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_50",
+    "target":"SauMauPingMIA702.plusarg_reader_46",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_51",
+    "target":"SauMauPingMIA702.plusarg_reader_47",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
@@ -2242,6 +1232,11 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.plusarg_reader_48",
+    "resourceId":"/vsrc/plusarg_reader.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
     "target":"SauMauPingMIA702.AsyncResetReg_33",
     "resourceId":"/vsrc/AsyncResetReg.v"
   },
@@ -2254,11 +1249,6 @@
     "class":"firrtl.transforms.BlackBoxResourceAnno",
     "target":"SauMauPingMIA702.AsyncResetReg_35",
     "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_52",
-    "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
@@ -2462,27 +1452,12 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_76",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_77",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_78",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_53",
+    "target":"SauMauPingMIA702.plusarg_reader_49",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_54",
+    "target":"SauMauPingMIA702.plusarg_reader_50",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
@@ -25313,6 +24288,21 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_76",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_77",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_78",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
     "target":"SauMauPingMIA702.AsyncResetReg_79",
     "resourceId":"/vsrc/AsyncResetReg.v"
   },
@@ -25533,27 +24523,12 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_123",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_124",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_125",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_55",
+    "target":"SauMauPingMIA702.plusarg_reader_51",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_56",
+    "target":"SauMauPingMIA702.plusarg_reader_52",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
@@ -25647,7 +24622,7 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_57",
+    "target":"SauMauPingMIA702.plusarg_reader_53",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
@@ -25755,8 +24730,23 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_58",
+    "target":"SauMauPingMIA702.plusarg_reader_54",
     "resourceId":"/vsrc/plusarg_reader.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_123",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_124",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_125",
+    "resourceId":"/vsrc/AsyncResetReg.v"
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
@@ -25765,728 +24755,17 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_127",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_128",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_129",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_59",
+    "target":"SauMauPingMIA702.plusarg_reader_55",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_60",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.DCache_1.io.cpu.resp"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.DCache_1.io.cpu.s1_data"
-  },
-  {
-    "class":"freechips.rocketchip.util.SRAMAnnotation",
-    "target":"SauMauPingMIA702.DCacheDataArray_1.data_arrays_0",
-    "address_width":9,
-    "name":"data_arrays_0",
-    "data_width":256,
-    "depth":512,
-    "description":"DCache Data Array",
-    "write_mask_granularity":8
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.DCache_1.s2_valid_cached_miss"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.DCache_1.s2_victim_dirty"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.ICache_1.s1_hit"
-  },
-  {
-    "class":"freechips.rocketchip.util.SRAMAnnotation",
-    "target":"SauMauPingMIA702.ICache_1.tag_array",
-    "address_width":6,
-    "name":"tag_array",
-    "data_width":84,
-    "depth":64,
-    "description":"ICache Tag Array",
-    "write_mask_granularity":21
-  },
-  {
-    "class":"freechips.rocketchip.util.SRAMAnnotation",
-    "target":"SauMauPingMIA702.ICache_1.data_arrays_0",
-    "address_width":9,
-    "name":"data_arrays_0",
-    "data_width":128,
-    "depth":512,
-    "description":"ICache Data Array",
-    "write_mask_granularity":32
-  },
-  {
-    "class":"freechips.rocketchip.util.SRAMAnnotation",
-    "target":"SauMauPingMIA702.ICache_1.data_arrays_1",
-    "address_width":9,
-    "name":"data_arrays_1",
-    "data_width":128,
-    "depth":512,
-    "description":"ICache Data Array",
-    "write_mask_granularity":32
-  },
-  {
-    "class":"freechips.rocketchip.util.ParamsAnnotation",
-    "target":"SauMauPingMIA702.BTB_1",
-    "paramsClassName":"freechips.rocketchip.rocket.BTBParams",
-    "params":{
-      "nPages":6,
-      "nMatchBits":14,
-      "nEntries":28,
-      "bhtParams":{
-        "nEntries":512,
-        "counterLength":1,
-        "historyLength":8,
-        "historyBits":3
-      },
-      "nRAS":6,
-      "updatesOutOfOrder":false
-    }
-  },
-  {
-    "class":"freechips.rocketchip.util.ParamsAnnotation",
-    "target":"SauMauPingMIA702.BTB_1",
-    "paramsClassName":"freechips.rocketchip.rocket.BHTParams",
-    "params":{
-      "nEntries":512,
-      "counterLength":1,
-      "historyLength":8,
-      "historyBits":3
-    }
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_61",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.FPUFMAPipe_2"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.FPToInt_1"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.IntToFP_1"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.FPToFP_1"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.FPUFMAPipe_3"
-  },
-  {
-    "class":"freechips.rocketchip.util.ParamsAnnotation",
-    "target":"SauMauPingMIA702.RocketTile_1",
-    "paramsClassName":"freechips.rocketchip.tile.RocketTileParams",
-    "params":{
-      "name":"tile",
-      "dataScratchpadBytes":0,
-      "trace":false,
-      "btb":{
-        "nEntries":28,
-        "nMatchBits":14,
-        "nPages":6,
-        "nRAS":6,
-        "bhtParams":{
-          "nEntries":512,
-          "counterLength":1,
-          "historyLength":8,
-          "historyBits":3
-        },
-        "updatesOutOfOrder":false
-      },
-      "hartId":1,
-      "icache":{
-        "nSets":64,
-        "nWays":4,
-        "rowBits":64,
-        "nTLBEntries":32,
-        "cacheIdBits":0,
-        "prefetch":false,
-        "blockBytes":64,
-        "latency":2,
-        "fetchBytes":4
-      },
-      "hcfOnUncorrectable":false,
-      "boundaryBuffers":false,
-      "core":{
-        "bootFreqHz":0,
-        "useVM":true,
-        "useUser":false,
-        "useDebug":true,
-        "useAtomics":true,
-        "useAtomicsOnlyForIO":false,
-        "useCompressed":true,
-        "nLocalInterrupts":0,
-        "nBreakpoints":1,
-        "nPMPs":8,
-        "nPerfCounters":0,
-        "haveBasicCounters":true,
-        "misaWritable":true,
-        "nL2TLBEntries":0,
-        "mtvecInit":0,
-        "mtvecWritable":true,
-        "fastLoadWord":true,
-        "fastLoadByte":false,
-        "mulDiv":{
-          "mulUnroll":8,
-          "divUnroll":1,
-          "mulEarlyOut":true,
-          "divEarlyOut":true
-        },
-        "fpu":{
-          "fLen":64,
-          "divSqrt":true,
-          "sfmaLatency":3,
-          "dfmaLatency":4
-        }
-      },
-      "dcache":{
-        "nSets":64,
-        "nWays":4,
-        "rowBits":64,
-        "nTLBEntries":32,
-        "dataECCBytes":1,
-        "nMSHRs":0,
-        "nSDQ":17,
-        "nRPQ":16,
-        "nMMIOs":1,
-        "blockBytes":64,
-        "acquireBeforeRelease":false,
-        "pipelineWayMux":false
-      }
-    }
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_62",
+    "target":"SauMauPingMIA702.plusarg_reader_56",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_130",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_131",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_132",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_133",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_63",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_64",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.DCache_2.io.cpu.resp"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.DCache_2.io.cpu.s1_data"
-  },
-  {
-    "class":"freechips.rocketchip.util.SRAMAnnotation",
-    "target":"SauMauPingMIA702.DCacheDataArray_2.data_arrays_0",
-    "address_width":9,
-    "name":"data_arrays_0",
-    "data_width":256,
-    "depth":512,
-    "description":"DCache Data Array",
-    "write_mask_granularity":8
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.DCache_2.s2_valid_cached_miss"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.DCache_2.s2_victim_dirty"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.ICache_2.s1_hit"
-  },
-  {
-    "class":"freechips.rocketchip.util.SRAMAnnotation",
-    "target":"SauMauPingMIA702.ICache_2.tag_array",
-    "address_width":6,
-    "name":"tag_array",
-    "data_width":84,
-    "depth":64,
-    "description":"ICache Tag Array",
-    "write_mask_granularity":21
-  },
-  {
-    "class":"freechips.rocketchip.util.SRAMAnnotation",
-    "target":"SauMauPingMIA702.ICache_2.data_arrays_0",
-    "address_width":9,
-    "name":"data_arrays_0",
-    "data_width":128,
-    "depth":512,
-    "description":"ICache Data Array",
-    "write_mask_granularity":32
-  },
-  {
-    "class":"freechips.rocketchip.util.SRAMAnnotation",
-    "target":"SauMauPingMIA702.ICache_2.data_arrays_1",
-    "address_width":9,
-    "name":"data_arrays_1",
-    "data_width":128,
-    "depth":512,
-    "description":"ICache Data Array",
-    "write_mask_granularity":32
-  },
-  {
-    "class":"freechips.rocketchip.util.ParamsAnnotation",
-    "target":"SauMauPingMIA702.BTB_2",
-    "paramsClassName":"freechips.rocketchip.rocket.BTBParams",
-    "params":{
-      "nPages":6,
-      "nMatchBits":14,
-      "nEntries":28,
-      "bhtParams":{
-        "nEntries":512,
-        "counterLength":1,
-        "historyLength":8,
-        "historyBits":3
-      },
-      "nRAS":6,
-      "updatesOutOfOrder":false
-    }
-  },
-  {
-    "class":"freechips.rocketchip.util.ParamsAnnotation",
-    "target":"SauMauPingMIA702.BTB_2",
-    "paramsClassName":"freechips.rocketchip.rocket.BHTParams",
-    "params":{
-      "nEntries":512,
-      "counterLength":1,
-      "historyLength":8,
-      "historyBits":3
-    }
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_65",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.FPUFMAPipe_4"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.FPToInt_2"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.IntToFP_2"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.FPToFP_2"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.FPUFMAPipe_5"
-  },
-  {
-    "class":"freechips.rocketchip.util.ParamsAnnotation",
-    "target":"SauMauPingMIA702.RocketTile_2",
-    "paramsClassName":"freechips.rocketchip.tile.RocketTileParams",
-    "params":{
-      "name":"tile",
-      "dataScratchpadBytes":0,
-      "trace":false,
-      "btb":{
-        "nEntries":28,
-        "nMatchBits":14,
-        "nPages":6,
-        "nRAS":6,
-        "bhtParams":{
-          "nEntries":512,
-          "counterLength":1,
-          "historyLength":8,
-          "historyBits":3
-        },
-        "updatesOutOfOrder":false
-      },
-      "hartId":2,
-      "icache":{
-        "nSets":64,
-        "nWays":4,
-        "rowBits":64,
-        "nTLBEntries":32,
-        "cacheIdBits":0,
-        "prefetch":false,
-        "blockBytes":64,
-        "latency":2,
-        "fetchBytes":4
-      },
-      "hcfOnUncorrectable":false,
-      "boundaryBuffers":false,
-      "core":{
-        "bootFreqHz":0,
-        "useVM":true,
-        "useUser":false,
-        "useDebug":true,
-        "useAtomics":true,
-        "useAtomicsOnlyForIO":false,
-        "useCompressed":true,
-        "nLocalInterrupts":0,
-        "nBreakpoints":1,
-        "nPMPs":8,
-        "nPerfCounters":0,
-        "haveBasicCounters":true,
-        "misaWritable":true,
-        "nL2TLBEntries":0,
-        "mtvecInit":0,
-        "mtvecWritable":true,
-        "fastLoadWord":true,
-        "fastLoadByte":false,
-        "mulDiv":{
-          "mulUnroll":8,
-          "divUnroll":1,
-          "mulEarlyOut":true,
-          "divEarlyOut":true
-        },
-        "fpu":{
-          "fLen":64,
-          "divSqrt":true,
-          "sfmaLatency":3,
-          "dfmaLatency":4
-        }
-      },
-      "dcache":{
-        "nSets":64,
-        "nWays":4,
-        "rowBits":64,
-        "nTLBEntries":32,
-        "dataECCBytes":1,
-        "nMSHRs":0,
-        "nSDQ":17,
-        "nRPQ":16,
-        "nMMIOs":1,
-        "blockBytes":64,
-        "acquireBeforeRelease":false,
-        "pipelineWayMux":false
-      }
-    }
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_66",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_134",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_135",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_136",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_137",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_67",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_68",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.DCache_3.io.cpu.resp"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.DCache_3.io.cpu.s1_data"
-  },
-  {
-    "class":"freechips.rocketchip.util.SRAMAnnotation",
-    "target":"SauMauPingMIA702.DCacheDataArray_3.data_arrays_0",
-    "address_width":9,
-    "name":"data_arrays_0",
-    "data_width":256,
-    "depth":512,
-    "description":"DCache Data Array",
-    "write_mask_granularity":8
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.DCache_3.s2_valid_cached_miss"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.DCache_3.s2_victim_dirty"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"SauMauPingMIA702.ICache_3.s1_hit"
-  },
-  {
-    "class":"freechips.rocketchip.util.SRAMAnnotation",
-    "target":"SauMauPingMIA702.ICache_3.tag_array",
-    "address_width":6,
-    "name":"tag_array",
-    "data_width":84,
-    "depth":64,
-    "description":"ICache Tag Array",
-    "write_mask_granularity":21
-  },
-  {
-    "class":"freechips.rocketchip.util.SRAMAnnotation",
-    "target":"SauMauPingMIA702.ICache_3.data_arrays_0",
-    "address_width":9,
-    "name":"data_arrays_0",
-    "data_width":128,
-    "depth":512,
-    "description":"ICache Data Array",
-    "write_mask_granularity":32
-  },
-  {
-    "class":"freechips.rocketchip.util.SRAMAnnotation",
-    "target":"SauMauPingMIA702.ICache_3.data_arrays_1",
-    "address_width":9,
-    "name":"data_arrays_1",
-    "data_width":128,
-    "depth":512,
-    "description":"ICache Data Array",
-    "write_mask_granularity":32
-  },
-  {
-    "class":"freechips.rocketchip.util.ParamsAnnotation",
-    "target":"SauMauPingMIA702.BTB_3",
-    "paramsClassName":"freechips.rocketchip.rocket.BTBParams",
-    "params":{
-      "nPages":6,
-      "nMatchBits":14,
-      "nEntries":28,
-      "bhtParams":{
-        "nEntries":512,
-        "counterLength":1,
-        "historyLength":8,
-        "historyBits":3
-      },
-      "nRAS":6,
-      "updatesOutOfOrder":false
-    }
-  },
-  {
-    "class":"freechips.rocketchip.util.ParamsAnnotation",
-    "target":"SauMauPingMIA702.BTB_3",
-    "paramsClassName":"freechips.rocketchip.rocket.BHTParams",
-    "params":{
-      "nEntries":512,
-      "counterLength":1,
-      "historyLength":8,
-      "historyBits":3
-    }
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_69",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.FPUFMAPipe_6"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.FPToInt_3"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.IntToFP_3"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.FPToFP_3"
-  },
-  {
-    "class":"freechips.rocketchip.util.RetimeModuleAnnotation",
-    "target":"SauMauPingMIA702.FPUFMAPipe_7"
-  },
-  {
-    "class":"freechips.rocketchip.util.ParamsAnnotation",
-    "target":"SauMauPingMIA702.RocketTile_3",
-    "paramsClassName":"freechips.rocketchip.tile.RocketTileParams",
-    "params":{
-      "name":"tile",
-      "dataScratchpadBytes":0,
-      "trace":false,
-      "btb":{
-        "nEntries":28,
-        "nMatchBits":14,
-        "nPages":6,
-        "nRAS":6,
-        "bhtParams":{
-          "nEntries":512,
-          "counterLength":1,
-          "historyLength":8,
-          "historyBits":3
-        },
-        "updatesOutOfOrder":false
-      },
-      "hartId":3,
-      "icache":{
-        "nSets":64,
-        "nWays":4,
-        "rowBits":64,
-        "nTLBEntries":32,
-        "cacheIdBits":0,
-        "prefetch":false,
-        "blockBytes":64,
-        "latency":2,
-        "fetchBytes":4
-      },
-      "hcfOnUncorrectable":false,
-      "boundaryBuffers":false,
-      "core":{
-        "bootFreqHz":0,
-        "useVM":true,
-        "useUser":false,
-        "useDebug":true,
-        "useAtomics":true,
-        "useAtomicsOnlyForIO":false,
-        "useCompressed":true,
-        "nLocalInterrupts":0,
-        "nBreakpoints":1,
-        "nPMPs":8,
-        "nPerfCounters":0,
-        "haveBasicCounters":true,
-        "misaWritable":true,
-        "nL2TLBEntries":0,
-        "mtvecInit":0,
-        "mtvecWritable":true,
-        "fastLoadWord":true,
-        "fastLoadByte":false,
-        "mulDiv":{
-          "mulUnroll":8,
-          "divUnroll":1,
-          "mulEarlyOut":true,
-          "divEarlyOut":true
-        },
-        "fpu":{
-          "fLen":64,
-          "divSqrt":true,
-          "sfmaLatency":3,
-          "dfmaLatency":4
-        }
-      },
-      "dcache":{
-        "nSets":64,
-        "nWays":4,
-        "rowBits":64,
-        "nTLBEntries":32,
-        "dataECCBytes":1,
-        "nMSHRs":0,
-        "nSDQ":17,
-        "nRPQ":16,
-        "nMMIOs":1,
-        "blockBytes":64,
-        "acquireBeforeRelease":false,
-        "pipelineWayMux":false
-      }
-    }
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_70",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_138",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_139",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_140",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_141",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_71",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_72",
-    "resourceId":"/vsrc/plusarg_reader.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_73",
+    "target":"SauMauPingMIA702.plusarg_reader_57",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
@@ -26790,7 +25069,7 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_74",
+    "target":"SauMauPingMIA702.plusarg_reader_58",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
@@ -27274,87 +25553,738 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_75",
+    "target":"SauMauPingMIA702.plusarg_reader_59",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.plusarg_reader_60",
+    "resourceId":"/vsrc/plusarg_reader.v"
+  },
+  {
+    "class":"freechips.rocketchip.util.RegFieldDescMappingAnnotation",
+    "target":"SauMauPingMIA702.TLSPIFlash",
+    "regMappingSer":{
+      "displayName":"TLSPIFlash",
+      "deviceName":"TLSPIFlash",
+      "baseAddress":268517376,
+      "regFields":[
+        {
+          "byteOffset":"0x0",
+          "bitOffset":0,
+          "bitWidth":12,
+          "name":"sckdiv",
+          "resetValue":3,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Serial clock divisor",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x4",
+          "bitOffset":0,
+          "bitWidth":1,
+          "name":"sckmode_pha",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Serial clock phase",
+          "group":"sckmode",
+          "groupDesc":"Serial clock mode",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x4",
+          "bitOffset":1,
+          "bitWidth":1,
+          "name":"sckmode_pol",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Serial clock polarity",
+          "group":"sckmode",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x10",
+          "bitOffset":0,
+          "bitWidth":1,
+          "name":"csid",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Chip select id",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x14",
+          "bitOffset":0,
+          "bitWidth":1,
+          "name":"csdef",
+          "resetValue":1,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Chip select default",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x18",
+          "bitOffset":0,
+          "bitWidth":2,
+          "name":"csmode",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Chip select mode",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x28",
+          "bitOffset":0,
+          "bitWidth":8,
+          "name":"cssck",
+          "resetValue":1,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"CS to SCK delay",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x2a",
+          "bitOffset":0,
+          "bitWidth":8,
+          "name":"sckcs",
+          "resetValue":1,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"SCK to CS delay",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x2c",
+          "bitOffset":0,
+          "bitWidth":8,
+          "name":"intercs",
+          "resetValue":1,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Minimum CS inactive time",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x2e",
+          "bitOffset":0,
+          "bitWidth":8,
+          "name":"interxfr",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Minimum interframe delay",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x40",
+          "bitOffset":0,
+          "bitWidth":2,
+          "name":"proto",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"SPI Protocol",
+          "group":"fmt",
+          "groupDesc":"Serial frame format",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x40",
+          "bitOffset":2,
+          "bitWidth":1,
+          "name":"endian",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"SPI Endianness",
+          "group":"fmt",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x40",
+          "bitOffset":3,
+          "bitWidth":1,
+          "name":"iodir",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"SPI I/O Direction",
+          "group":"fmt",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x42",
+          "bitOffset":0,
+          "bitWidth":4,
+          "name":"len",
+          "resetValue":8,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Number of bits per frame",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x48",
+          "bitOffset":0,
+          "bitWidth":8,
+          "name":"data",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Transmit data",
+          "group":"txdata",
+          "groupDesc":"Transmit data",
+          "volatile":false,
+          "hasReset":false,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x48",
+          "bitOffset":8,
+          "bitWidth":23,
+          "name":"reserved",
+          "resetValue":0,
+          "accessType":"R",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"",
+          "group":"txdata",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x48",
+          "bitOffset":31,
+          "bitWidth":1,
+          "name":"full",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Transmit FIFO full",
+          "group":"txdata",
+          "groupDesc":"None",
+          "volatile":true,
+          "hasReset":false,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x4c",
+          "bitOffset":0,
+          "bitWidth":8,
+          "name":"data",
+          "resetValue":0,
+          "accessType":"R",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Receive data",
+          "group":"rxdata",
+          "groupDesc":"Receive data",
+          "volatile":true,
+          "hasReset":false,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x4c",
+          "bitOffset":8,
+          "bitWidth":23,
+          "name":"reserved",
+          "resetValue":0,
+          "accessType":"R",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"",
+          "group":"rxdata",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x4c",
+          "bitOffset":31,
+          "bitWidth":1,
+          "name":"empty",
+          "resetValue":0,
+          "accessType":"R",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Receive FIFO empty",
+          "group":"rxdata",
+          "groupDesc":"None",
+          "volatile":true,
+          "hasReset":false,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x50",
+          "bitOffset":0,
+          "bitWidth":4,
+          "name":"txmark",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Transmit watermark",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x54",
+          "bitOffset":0,
+          "bitWidth":4,
+          "name":"rxmark",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Receive watermark",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x70",
+          "bitOffset":0,
+          "bitWidth":1,
+          "name":"txwm_ie",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Transmit watermark interupt enable",
+          "group":"ie",
+          "groupDesc":"SPI interrupt enable",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x70",
+          "bitOffset":1,
+          "bitWidth":1,
+          "name":"rxwm_ie",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Receive watermark interupt enable",
+          "group":"ie",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x74",
+          "bitOffset":0,
+          "bitWidth":1,
+          "name":"txwm_ip",
+          "resetValue":0,
+          "accessType":"R",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Transmit watermark interupt pending",
+          "group":"ip",
+          "groupDesc":"SPI interrupt pending",
+          "volatile":true,
+          "hasReset":false,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x74",
+          "bitOffset":1,
+          "bitWidth":1,
+          "name":"rxwm_ip",
+          "resetValue":0,
+          "accessType":"R",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Receive watermark interupt pending",
+          "group":"ip",
+          "groupDesc":"None",
+          "volatile":true,
+          "hasReset":false,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x60",
+          "bitOffset":0,
+          "bitWidth":1,
+          "name":"flash_en",
+          "resetValue":1,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"SPIFlash mode select",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x64",
+          "bitOffset":0,
+          "bitWidth":1,
+          "name":"cmd_en",
+          "resetValue":1,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Enable sending of command",
+          "group":"ffmtlen",
+          "groupDesc":"SPIFlash instruction length",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x64",
+          "bitOffset":1,
+          "bitWidth":3,
+          "name":"cmd_en",
+          "resetValue":3,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Number of address bytes",
+          "group":"ffmtlen",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x64",
+          "bitOffset":4,
+          "bitWidth":4,
+          "name":"cmd_en",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Number of dummy cycles",
+          "group":"ffmtlen",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x65",
+          "bitOffset":0,
+          "bitWidth":2,
+          "name":"cmd_proto",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Protocol for transmitting command",
+          "group":"ffmtproto",
+          "groupDesc":"SPIFlash instruction format",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x65",
+          "bitOffset":2,
+          "bitWidth":2,
+          "name":"addr_proto",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Protocol for transmitting address and padding",
+          "group":"ffmtproto",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x65",
+          "bitOffset":4,
+          "bitWidth":2,
+          "name":"data_proto",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Protocol for transmitting receiving data",
+          "group":"ffmtproto",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x66",
+          "bitOffset":0,
+          "bitWidth":8,
+          "name":"cmd_code",
+          "resetValue":3,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"Value of command byte",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        },
+        {
+          "byteOffset":"0x67",
+          "bitOffset":0,
+          "bitWidth":8,
+          "name":"pad_code",
+          "resetValue":0,
+          "accessType":"RW",
+          "wrType":"None",
+          "rdAction":"None",
+          "desc":"First 8 bits to transmit during dummy cycles",
+          "group":"None",
+          "groupDesc":"None",
+          "volatile":false,
+          "hasReset":true,
+          "enumerations":{
+            
+          }
+        }
+      ]
+    }
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.plusarg_reader_61",
+    "resourceId":"/vsrc/plusarg_reader.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_127",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_128",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_129",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_130",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_131",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_132",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_133",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_134",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_135",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_136",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_137",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_138",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_139",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_140",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_141",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
     "target":"SauMauPingMIA702.AsyncResetReg_142",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_143",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_144",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_145",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_146",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_147",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_148",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_149",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_150",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_151",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_152",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_153",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_154",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_155",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_156",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_157",
     "resourceId":"/vsrc/AsyncResetReg.v"
   },
   {
@@ -27676,12 +26606,12 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_76",
+    "target":"SauMauPingMIA702.plusarg_reader_62",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.plusarg_reader_77",
+    "target":"SauMauPingMIA702.plusarg_reader_63",
     "resourceId":"/vsrc/plusarg_reader.v"
   },
   {
@@ -27691,17 +26621,92 @@
       {
         "axi4Id":{
           "start":0,
-          "end":32
+          "end":8
         },
         "tlId":{
           "start":0,
-          "end":64
+          "end":16
         },
         "name":"TLBroadcast",
         "isCache":false,
         "requestFifo":false
       }
     ]
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_143",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_144",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_145",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_146",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_147",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_148",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_149",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_150",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_151",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_152",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_153",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_154",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_155",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_156",
+    "resourceId":"/vsrc/AsyncResetReg.v"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxResourceAnno",
+    "target":"SauMauPingMIA702.AsyncResetReg_157",
+    "resourceId":"/vsrc/AsyncResetReg.v"
   },
   {
     "class":"firrtl.transforms.BlackBoxResourceAnno",
@@ -29104,81 +28109,6 @@
     "resourceId":"/vsrc/AsyncResetReg.v"
   },
   {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_438",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_439",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_440",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_441",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_442",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_443",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_444",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_445",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_446",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_447",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_448",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_449",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_450",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_451",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_452",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
     "class":"freechips.rocketchip.util.AddressMapAnnotation",
     "target":"SauMauPingMIA702.SayMauPingMIA702System",
     "mapping":[
@@ -29200,18 +28130,18 @@
       },
       {
         "range":{
-          "base":12288,
-          "size":4096
+          "base":65536,
+          "size":8192
         },
         "permissions":{
           "r":true,
-          "w":true,
+          "w":false,
           "x":true,
-          "c":false,
-          "a":true
+          "c":true,
+          "a":false
         },
         "names":[
-          "error-device@3000"
+          "rom@10000"
         ]
       },
       {
@@ -29244,6 +28174,38 @@
         },
         "names":[
           "interrupt-controller@c000000"
+        ]
+      },
+      {
+        "range":{
+          "base":268517376,
+          "size":4096
+        },
+        "permissions":{
+          "r":true,
+          "w":true,
+          "x":false,
+          "c":false,
+          "a":true
+        },
+        "names":[
+          "spi@10014000"
+        ]
+      },
+      {
+        "range":{
+          "base":536870912,
+          "size":536870912
+        },
+        "permissions":{
+          "r":true,
+          "w":false,
+          "x":true,
+          "c":true,
+          "a":false
+        },
+        "names":[
+          "spi@10014000"
         ]
       },
       {
@@ -29335,18 +28297,18 @@
       },
       {
         "range":{
-          "base":12288,
-          "size":4096
+          "base":65536,
+          "size":8192
         },
         "permissions":{
           "r":true,
-          "w":true,
+          "w":false,
           "x":true,
-          "c":false,
-          "a":true
+          "c":true,
+          "a":false
         },
         "names":[
-          "error-device@3000"
+          "rom@10000"
         ]
       },
       {
@@ -29379,6 +28341,38 @@
         },
         "names":[
           "interrupt-controller@c000000"
+        ]
+      },
+      {
+        "range":{
+          "base":268517376,
+          "size":4096
+        },
+        "permissions":{
+          "r":true,
+          "w":true,
+          "x":false,
+          "c":false,
+          "a":true
+        },
+        "names":[
+          "spi@10014000"
+        ]
+      },
+      {
+        "range":{
+          "base":536870912,
+          "size":536870912
+        },
+        "permissions":{
+          "r":true,
+          "w":false,
+          "x":true,
+          "c":true,
+          "a":false
+        },
+        "names":[
+          "spi@10014000"
         ]
       },
       {
@@ -29451,40 +28445,5 @@
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"SauMauPingMIA702.SayMauPingMIA702System.tile_inputs"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_453",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_454",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_455",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_456",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_457",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_458",
-    "resourceId":"/vsrc/AsyncResetReg.v"
-  },
-  {
-    "class":"firrtl.transforms.BlackBoxResourceAnno",
-    "target":"SauMauPingMIA702.AsyncResetReg_459",
-    "resourceId":"/vsrc/AsyncResetReg.v"
   }
 ]

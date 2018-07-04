@@ -1,5 +1,5 @@
 
-# file: vc707_sys_clock_mmcm1.xdc
+# file: sys_clock_mmcm2.xdc
 # 
 # (c) Copyright 2008 - 2013 Xilinx, Inc. All rights reserved.
 # 
@@ -52,9 +52,8 @@
 # input clocks. You can use these to time your system. If required
 # commented constraints can be used in the top level xdc 
 #----------------------------------------------------------------
-# Connect to input port when clock capable pin is selected for input
-create_clock -period 10.000 [get_ports clk_in1]
-set_input_jitter [get_clocks -of_objects [get_ports clk_in1]] 0.1
+#create_clock -period 8.000 [get_ports clk_in1]
+#set_input_jitter [get_clocks -of_objects [get_ports clk_in1]] 0.08
 
 
 set_property PHASESHIFT_MODE WAVEFORM [get_cells -hierarchical *adv*]

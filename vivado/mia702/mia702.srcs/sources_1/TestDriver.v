@@ -1,162 +1,163 @@
-// See LICENSE.SiFive for license details.
-//VCS coverage exclude_file
+`define SIMULATION
 
 `define CLOCK_PERIOD 1
-
 `ifndef RESET_DELAY
- `define RESET_DELAY 777.7
+`define RESET_DELAY 100
 `endif
 
 module TestDriver;
-
-  reg clock = 1'b0;
-  reg reset = 1'b1;
-
-  always #(`CLOCK_PERIOD/2.0) clock = ~clock;
-  initial #(`RESET_DELAY) reset = 0;
-
-  // Read input arguments and initialize
-  reg verbose = 1'b0;
-  wire printf_cond = verbose && !reset;
-  reg [63:0] max_cycles = 0;
-  reg [63:0] dump_start = 0;
-  reg [63:0] trace_count = 0;
-  reg [1023:0] fsdbfile = 0;
-  reg [1023:0] vcdplusfile = 0;
-  reg [1023:0] vcdfile = 0;
-  integer unsigned rand_value;
-  initial
-  begin
-    //void'($value$plusargs("max-cycles=%d", max_cycles));
-    //void'($value$plusargs("dump-start=%d", dump_start));
-    verbose = $test$plusargs("verbose");
-
-    // do not delete the lines below.
-    // $random function needs to be called with the seed once to affect all
-    // the downstream $random functions within the Chisel-generated Verilog
-    // code.
-    // $urandom is seeded via cmdline (+ntb_random_seed in VCS) but that
-    // doesn't seed $random.
-    rand_value = $urandom;
-    rand_value = $random(rand_value);
-    if (verbose) begin
-`ifdef VCS
-      $fdisplay(stderr, "testing $random %0x seed %d", rand_value, unsigned'($get_initial_random_seed));
-`else
-      $fdisplay(stderr, "testing $random %0x", rand_value);
+`ifdef den1024Mb
+	`include "1024Mb_ddr3_parameters.vh"
+`elsif den2048Mb
+	`include "2048Mb_ddr3_parameters.vh"
+`elsif den4096Mb
+	`include "4096Mb_ddr3_parameters.vh"
+`elsif den8192Mb
+	`include "8192Mb_ddr3_parameters.vh"
 `endif
-    end
 
-`ifdef DEBUG
+reg [1023:0] vcdfile = 0;
 
-    if ($value$plusargs("vcdplusfile=%s", vcdplusfile))
-    begin
-`ifdef VCS
-      $vcdplusfile(vcdplusfile);
-`else
-      $fdisplay(stderr, "Error: +vcdplusfile is VCS-only; use +vcdfile instead or recompile with VCS=1");
-      $fatal;
-`endif
-    end
+reg clock = 1'b0;
+reg reset_n = 1'b0;
 
-    if ($value$plusargs("fsdbfile=%s", fsdbfile))
-    begin
-`ifdef FSDB
-      $fsdbDumpfile(fsdbfile);
-      $fsdbDumpvars("+all");
-      //$fsdbDumpSVA;
-`else
-      $fdisplay(stderr, "Error: +fsdbfile is FSDB-only; use +vcdfile/+vcdplus instead or recompile with FSDB=1");
-      $fatal;
-`endif
-    end
+always #(`CLOCK_PERIOD/2.0) clock = ~clock;
+initial #(`RESET_DELAY) reset_n = 1;
 
-    if ($value$plusargs("vcdfile=%s", vcdfile))
-    begin
-      $dumpfile(vcdfile);
-      $dumpvars(0, testHarness);
-    end
+initial
+begin
+	if ($value$plusargs("vcdfile=%s", vcdfile))
+	begin
+	$dumpfile(vcdfile);
+	$dumpvars(0, testHarness);
+	end
+end
 
-`ifdef FSDB
-`define VCDPLUSON $fsdbDumpon;
-`define VCDPLUSCLOSE $fsdbDumpoff;
-`elsif VCS
-`define VCDPLUSON $vcdpluson(0); $vcdplusmemon(0);
-`define VCDPLUSCLOSE $vcdplusclose; $dumpoff;
-`else
-`define VCDPLUSON $dumpon;
-`define VCDPLUSCLOSE $dumpoff;
-`endif
-`else
-  // No +define+DEBUG
-`define VCDPLUSON
-`define VCDPLUSCLOSE
+// simulating RAM
+wire   ddr3_rst_n;
+wire   ddr3_ck;
+wire   ddr3_ck_n;
+wire   ddr3_cke;
+wire   ddr3_cs_n;
+wire   ddr3_ras_n;
+wire   ddr3_cas_n;
+wire   ddr3_we_n;
+wire   [(2*DM_BITS)-1:0]   ddr3_dm_tdqs;
+wire   [(2*BA_BITS)-1:0]   ddr3_ba;
+wire   [(2*ADDR_BITS)-1:0] ddr3_addr;
+wire   [(2*DQ_BITS)-1:0]   ddr3_dq;
+wire   [(2*DQS_BITS)-1:0]  ddr3_dqs;
+wire   [(2*DQS_BITS)-1:0]  ddr3_dqs_n;
+wire   [(2*DQS_BITS)-1:0]  ddr3_tdqs_n;
+wire   ddr3_odt;
 
-    if ($test$plusargs("vcdplusfile=") || $test$plusargs("vcdfile=") || $test$plusargs("fsdbfile="))
-    begin
-      $fdisplay(stderr, "Error: +vcdfile, +vcdplusfile, or +fsdbfile requested but compile did not have +define+DEBUG enabled");
-      $fatal;
-    end
+ddr3 dram1 (
+	.rst_n(ddr3_rst_n),
+	.ck(ddr3_ck),
+	.ck_n(ddr3_ck_n),
+	.cke(ddr3_cke),
+	.cs_n(ddr3_cs_n),
+	.ras_n(ddr3_ras_n),
+	.cas_n(ddr3_cas_n),
+	.we_n(ddr3_we_n),
+	.dm_tdqs(ddr3_dm_tdqs[(2*DM_BITS)-1:DM_BITS]),
+	.ba(ddr3_ba[(2*BA_BITS)-1:BA_BITS]),
+	.addr(ddr3_addr[(2*ADDR_BITS)-1:ADDR_BITS]),
+	.dq(ddr3_dq[(2*DQ_BITS)-1:DQ_BITS]),
+	.dqs(ddr3_dqs[(2*DQS_BITS)-1:DQS_BITS]),
+	.dqs_n(ddr3_dqs_n[(2*DQS_BITS)-1:DQS_BITS]),
+	.tdqs_n(ddr3_tdqs_n[(2*DQS_BITS)-1:DQS_BITS]),
+	.odt(ddr3_odt)
+);
 
-`endif
-  end
+ddr3 dram2 (
+	.rst_n(ddr3_rst_n),
+	.ck(ddr3_ck),
+	.ck_n(ddr3_ck_n),
+	.cke(ddr3_cke),
+	.cs_n(ddr3_cs_n),
+	.ras_n(ddr3_ras_n),
+	.cas_n(ddr3_cas_n),
+	.we_n(ddr3_we_n),
+	.dm_tdqs(ddr3_dm_tdqs[(DM_BITS-1):0]),
+	.ba(ddr3_ba[(BA_BITS-1):0]),
+	.addr(ddr3_addr[(ADDR_BITS-1):0]),
+	.dq(ddr3_dq[(DQ_BITS-1):0]),
+	.dqs(ddr3_dqs[(DQS_BITS-1):0]),
+	.dqs_n(ddr3_dqs_n[(DQS_BITS-1):0]),
+	.tdqs_n(ddr3_tdqs_n[(DQS_BITS-1):0]),
+	.odt(ddr3_odt)
+);
 
-`ifdef TESTBENCH_IN_UVM
-  // UVM library has its own way to manage end-of-simulation.
-  // A UVM-based testbench will raise an objection, watch this signal until this goes 1, then drop the objection.
-  reg finish_request = 1'b0;
-`endif
-  reg [255:0] reason = "";
-  reg failure = 1'b0;
-  wire success;
-  integer stderr = 32'h80000002;
-  always @(posedge clock)
-  begin
-`ifdef GATE_LEVEL
-    if (verbose)
-    begin
-      $fdisplay(stderr, "C: %10d", trace_count);
-    end
-`endif
-    if (trace_count == dump_start)
-    begin
-      `VCDPLUSON
-    end
+// sd card
+wire sdio_clk;
+wire sdio_cmd;
+wire[3:0] sdio_dat;
 
-    trace_count = trace_count + 1;
-    if (!reset)
-    begin
-      if (max_cycles > 0 && trace_count > max_cycles)
-      begin
-        reason = " (timeout)";
-        failure = 1'b1;
-      end
+sdModel #(
+.ramdisk("/home/leviathan/SauMauPing1/sdcard_image.bin")
+) sd (
+.sdClk(sdio_clk),
+.cmd(sdio_cmd),
+.dat(sdio_dat)
+);
 
-      if (failure)
-      begin
-        $fdisplay(stderr, "*** FAILED ***%s after %d simulation cycles", reason, trace_count);
-        `VCDPLUSCLOSE
-        $fatal;
-      end
+// QSPI
+wire qspi_SI = 1'b0;
+wire qspi_SO = 1'b0;
+wire qspi_SCK = 1'b0;
+wire qspi_CSNeg = 1'b0;
+wire qspi_RSTNeg = 1'b0;
+wire qspi_HOLDNeg = 1'b0;
+wire qspi_WPNeg = 1'b0;
 
-      if (success)
-      begin
-        if (verbose)
-          $fdisplay(stderr, "Completed after %d simulation cycles", trace_count);
-        `VCDPLUSCLOSE
-`ifdef TESTBENCH_IN_UVM
-        finish_request = 1;
-`else
-        $finish;
-`endif
-      end
-    end
-  end
+s25fl256s #(
+    //.mem_file_name("/home/leviathan/SauMauPing1/builds/xip.hex")
+    .mem_file_name("/home/leviathan/SauMauPing1/sdcard_image.bin")
+)
+qspi(
+    .SI(qspi_SI),
+    .SO(qspi_SO),
+    .SCK(qspi_SCK),
+    .CSNeg(qspi_CSNeg),
+    .RSTNeg(qspi_RSTNeg),
+    .WPNeg(qspi_WPNeg),
+    .HOLDNeg(qspi_HOLDNeg)
+);
 
-  SauMauPingMIA702 testHarness(
-    .clock(clock),
-    .reset(reset),
-    .io_success(success)
-  );
+// the actual SoC:
+SauMauPingMIA702 testHarness(
+	.clock(clock),
+	.resetn(reset_n),
+	// DDR3
+	.ddr_ddr3_addr(ddr3_addr),
+	.ddr_ddr3_ba(ddr3_ba),
+	.ddr_ddr3_ras_n(ddr3_ras_n), 
+	.ddr_ddr3_cas_n(ddr3_cas_n), 
+	.ddr_ddr3_we_n(ddr3_we_n), 
+	.ddr_ddr3_reset_n(ddr3_rst_n),
+	.ddr_ddr3_ck_p(ddr3_ck), 
+	.ddr_ddr3_ck_n(ddr3_ck_n), 
+	.ddr_ddr3_cke(ddr3_cke), 
+	.ddr_ddr3_cs_n(ddr3_cs_n), 
+	.ddr_ddr3_dm(ddr3_dm_tdqs), 
+	.ddr_ddr3_odt(ddr3_odt), 
+	.ddr_ddr3_dq(ddr3_dq), 
+	.ddr_ddr3_dqs_n(ddr3_dqs_n), 
+	.ddr_ddr3_dqs_p(ddr3_dqs),
+
+	// SD card
+	.sdio_clk(sdio_clk),
+	.sdio_cmd(sdio_cmd),
+	.sdio_dat(sdio_dat),
+
+	// QSPI
+	.qspi_cs(qspi_CSNeg),
+	.qspi_sck(qspi_SCK),
+	.qspi_dq_0(qspi_SI),
+	.qspi_dq_1(qspi_SO),
+	.qspi_dq_2(),
+	.qspi_dq_3()
+);
 
 endmodule

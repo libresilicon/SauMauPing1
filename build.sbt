@@ -1,17 +1,16 @@
 // See LICENSE for license details.
-organization := "com.libresilicon"
-name := "soc"
+organization := "com.sifive"
+name := "freedom"
 version := "0.1.0"
 
 lazy val commonSettings = Seq(
-  scalaVersion := "2.11.12",  // This needs to match rocket-chip's scalaVersion
-  scalacOptions ++= Seq(
-    "-deprecation",
-    "-feature",
-    "-unchecked",
-    "-Xfatal-warnings",
-    "-language:reflectiveCalls"
-  )
+	scalaVersion := "2.12.4",  // This needs to match rocket-chip's scalaVersion
+	scalacOptions ++= Seq(
+		"-feature",
+		"-unchecked",
+		"-language:reflectiveCalls",
+		"-Xsource:2.11"
+	)
 )
 
 // A RootProject (not well-documented) tells sbt to treat the target directory
@@ -19,21 +18,26 @@ lazy val commonSettings = Seq(
 // normal `project in file()` declaration, sbt would ignore all of rocket-chip's
 // build settings, and therefore not understand that it has its own dependencies
 // on chisel, etc.
+lazy val rocketchip = RootProject(file("rocket-chip"))
 
-lazy val rocketChip = RootProject(file("rocket-chip"))
+lazy val sifiveBlocks = (project in file("sifive-blocks"))
+	.dependsOn(rocketchip)
+	.settings(commonSettings: _*)
 
-lazy val sifiveBlocks = (project in file("sifive-blocks")).
-  dependsOn(rocketChip).
-  settings(commonSettings: _*)
+lazy val fpgaShells = (project in file("fpga-shells"))
+	.dependsOn(rocketchip)
+	.dependsOn(sifiveBlocks)
+	.settings(commonSettings: _*)
 
-lazy val lancevilleBlocks = (project in file("libresilicon-blocks")).
-  dependsOn(sifiveBlocks, rocketChip).
-  settings(commonSettings: _*)
+lazy val libreSiliconBlocks = (project in file("libresilicon-blocks"))
+	.dependsOn(fpgaShells)
+	.dependsOn(sifiveBlocks)
+	.dependsOn(rocketchip)
+	.settings(commonSettings: _*)
 
-lazy val fpgaWrapper = (project in file("fpga-shells")).
-  dependsOn(lancevilleBlocks, rocketChip, sifiveBlocks).
-  settings(commonSettings: _*)
-
-lazy val freedomPlatforms = (project in file(".")).
-  dependsOn(lancevilleBlocks, fpgaWrapper, rocketChip, sifiveBlocks).
-  settings(commonSettings: _*)
+lazy val libreSiliconChips = (project in file("."))
+	.dependsOn(libreSiliconBlocks) 
+	.dependsOn(fpgaShells)
+	.dependsOn(sifiveBlocks)
+	.dependsOn(rocketchip)
+	.settings(commonSettings: _*)

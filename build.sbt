@@ -1,6 +1,5 @@
-// See LICENSE for license details.
-organization := "com.sifive"
-name := "freedom"
+organization := "com.libresilicon"
+name := "saumauping"
 version := "0.1.0"
 
 lazy val commonSettings = Seq(

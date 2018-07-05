@@ -2,16 +2,10 @@
 base_dir := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 BUILD_DIR := $(base_dir)/builds
 PROJECT := libresilicon.soc
-export CONFIG_PROJECT := libresilicon.soc
-
-#MODEL := SauMauPingASIC
-MODEL := SauMauPingMIA702
-
-#export CONFIG := SauMauPingASICConfig
-export CONFIG := SauMauPingMIA702Config
-
-export BOOTROM_DIR := $(base_dir)/bootrom/sdboot
-
+CONFIG_PROJECT := libresilicon.soc
+MODEL := SauMauPing
+CONFIG := SauMauPingConfig
+BOOTROM_DIR := $(base_dir)/bootrom/sdboot
 rocketchip_dir := $(base_dir)/rocket-chip
 sifiveblocks_dir := $(base_dir)/sifive-blocks
 

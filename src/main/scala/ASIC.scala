@@ -16,8 +16,7 @@ import freechips.rocketchip.diplomacy.LazyModule
 class SauMauPing()(implicit p: Parameters)
 	extends ASICShell
 	with HasUART
-	//with HasSPIFlash
-	with HasDRAM
+	//with HasDRAM
 {
 	withClockAndReset(clk,rstn) {
 		val dut = Module(LazyModule(new SauMauPingSystem).module)
@@ -29,6 +28,12 @@ class SauMauPing()(implicit p: Parameters)
 		//connectSPIFlash (dut)
 		//connectSPI      (dut)
 		connectUART(dut)
-		connectDRAM(dut)
+		//connectDRAM(dut)
+		//dut.dontTouchPorts()
+		dut.tieOffInterrupts()
+		dut.connectSimAXIMem()
+		dut.connectSimAXIMMIO()
+		dut.l2_frontend_bus_axi4.foreach(_.tieoff)
+		//dut.connectDebug(clock, reset, io.success)
 	}
 }

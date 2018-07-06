@@ -16,27 +16,26 @@ import libresilicon.soc.dram._
 class SauMauPingSystem(implicit p: Parameters) extends RocketSubsystem
 	with HasPeripheryUART
 	with HasPeripherySPI
-	//with HasPeripherySPIFlash
 	with HasPeripheryGPIO
-	with HasPeripheryDRAM
+	//with HasPeripheryDRAM
 	with HasAsyncExtInterrupts
 	with CanHaveMasterAXI4MemPort
 	with CanHaveMasterAXI4MMIOPort
 	with CanHaveSlaveAXI4Port
 	with HasPeripheryBootROM
-	with HasSystemErrorSlave {
-		override lazy val module = new SauMauPingSystemModuleImp(this)
-	}
+	with HasSystemErrorSlave
+{
+	override lazy val module = new SauMauPingSystemModuleImp(this)
+
+}
 
 class SauMauPingSystemModuleImp[+L <: SauMauPingSystem](_outer: L) extends RocketSubsystemModuleImp(_outer)
 	with HasPeripheryUARTModuleImp
 	with HasPeripherySPIModuleImp
-	//with HasPeripherySPIFlashModuleImp
 	with HasPeripheryGPIOModuleImp
-	with HasPeripheryDRAMImp
+	//with HasPeripheryDRAMImp
 	with HasRTCModuleImp
 	with HasExtInterruptsModuleImp
 	with CanHaveMasterAXI4MemPortModuleImp
 	with CanHaveMasterAXI4MMIOPortModuleImp
 	with CanHaveSlaveAXI4PortModuleImp
-	//with DontTouch

@@ -1,6 +1,7 @@
 package libresilicon.soc
 
 import Chisel._
+
 import chisel3.core.{Input, Output, attach}
 import chisel3.experimental.{RawModule, Analog, withClockAndReset}
 
@@ -8,30 +9,29 @@ import freechips.rocketchip.config._
 import freechips.rocketchip.devices.debug._
 import freechips.rocketchip.util.{SyncResetSynchronizerShiftReg, ElaborationArtefacts, HeterogeneousBag}
 
+import sifive.blocks.devices.pinctrl.{BasePin}
+
 import sifive.blocks.devices.gpio._
 import sifive.blocks.devices.spi._
 import sifive.blocks.devices.uart._
 import libresilicon.soc.dram._
-import sifive.blocks.devices.pinctrl.{BasePin}
+
 
 //-------------------------------------------------------------------------
 // ASICShell
 //-------------------------------------------------------------------------
 
-trait HasDRAM { this: ASICShell =>
-	//for(param <- p(PeripheryDRAMKey)) {
-	val param = p(PeripheryDRAMKey).head
-	val io = IO(new IODDR(param))
-	//}
-
-	val mig_sys_reset   = Wire(Bool())
-	val mig_clock       = Wire(Clock())
-	val mig_resetn      = Wire(Bool())
-
+trait HasDRAM
+{ this: ASICShell =>
+	val dramParams = p(PeripheryDRAMKey)
+	val drams = dramParams.zipWithIndex.map { case(params, i) =>
+		val dram = IO(new DRAMPortIO(params))
+		dram
+	}
 	def connectDRAM(dut: HasPeripheryDRAMImp): Unit = {
-		val dramParams = p(PeripheryDRAMKey)
-		//if (!dramParams.isEmpty) {
-		//}
+		(drams zip dut.drams).foreach { case (io, device) =>
+			io <> device
+		}
 	}
 }
 
@@ -123,7 +123,9 @@ trait HasSDIO { this: ASICShell =>
 	}
 }
 
-abstract class ASICShell(implicit val p: Parameters) extends RawModule {
+abstract class ASICShell(implicit val p: Parameters)
+	extends RawModule
+{
 	// Interface
 	val rstn = IO(Input(Bool())) // low active reset
 	val clk = IO(Input(Clock()))

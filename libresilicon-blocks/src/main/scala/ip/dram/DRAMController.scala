@@ -11,7 +11,7 @@ import freechips.rocketchip.config._
 import freechips.rocketchip.subsystem.BaseSubsystem
 import freechips.rocketchip.diplomacy.{LazyModule, LazyModuleImp, AddressRange, AddressSet}
 
-class LibreSiliconDRAMController(c: DRAMParams)(implicit p: Parameters) extends LazyModule {
+/*class DRAMController(c: DRAMParams)(implicit p: Parameters) extends LazyModule {
 	//val ranges = AddressRange.fromSets(c.address)
 	//val depth = ranges.head.size
 	//val buffer  = LazyModule(new TLBuffer)
@@ -26,8 +26,8 @@ class LibreSiliconDRAMController(c: DRAMParams)(implicit p: Parameters) extends 
 	
 	lazy val module = new LazyModuleImp(this) {
 		val io = IO(new Bundle {
-			val port = new LibreSiliconDRAMControllerInterface(c)
+			LazyModule(new DRAMControllerInterface(c))
 		})
 		//io.port <> island.module.io.port
 	}
-}
+}*/

@@ -126,6 +126,8 @@ sim: romgen $(dtb)
 	verilator --cc --exe \
 	--top-module $(MODEL) \
 	+define+RANDOMIZE_GARBAGE_ASSIGN \
+	+define+RANDOMIZE_REG_INIT \
+	+define+RANDOMIZE_MEM_INIT \
 	--assert --output-split 20000 --output-split-cfuncs 20000 -Wno-STMTDLY --x-assign unique \
 	-O3 -CFLAGS "-O1 -std=c++11 -I/usr/include -DTEST_HARNESS=V$(MODEL) -DVERILATOR -include $(rocketchip_dir)/src/main/resources/csrc/verilator.h -include $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).plusArgs" \
 	-Mdir $(sim_dir) \

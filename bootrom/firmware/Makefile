@@ -1,28 +1,8 @@
 # RISCV environment variable must be set
-
-#CC=riscv64-suse-linux-gcc
-CC=riscv64-elf-gcc 
-OBJCOPY=riscv64-suse-linux-objcopy
-
-CFLAGS+= -march=rv64imafdc
-CFLAGS+= -mabi=lp64
-CFLAGS+= -Os
-CFLAGS+= -std=gnu11
-CFLAGS+= -Wall -I.
-CFLAGS+= -nostartfiles
-CFLAGS+= -fno-common -g
-CFLAGS+= -nostartfiles
-CFLAGS+= -DXIP_TARGET_ADDR=0x80000000
-#CFLAGS+= -DXIP_TARGET_ADDR=0x20000000
-CFLAGS+= -Wl,--section-start=.text=0x1000
-CFLAGS+= -static -nostdlib
-
-CONFIG_PROJECT ?= libresilicon.soc
-MODEL ?= SauMauPingMIA702
-CONFIG ?= SauMauPingMIA702Config
-BUILD_DIR ?= ../../builds
-rocketchip_dir ?= ../../rocket-chip
-sifiveblocks_dir ?= ../../sifive-blocks
+CFLAGS= -march=rv64imafdc -mcmodel=medany -O2 -std=gnu11 -Wall -nostartfiles 
+CFLAGS+= -fno-common -g -DENTROPY=0 -mabi=lp64 -DNONSMP_HART=0 
+CFLAGS+= -I $(BOOTROM_DIR)/include -I.
+LFLAGS=-static -nostdlib -L $(BOOTROM_DIR)/linker -T sdboot.elf.lds
 
 dtb := $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).dtb
 $(dtb): $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).dts
@@ -31,24 +11,24 @@ $(dtb): $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).dts
 .PHONY: dtb
 dtb: $(dtb)
 
-elf := $(BUILD_DIR)/xip.elf
-$(elf): xip.S $(dtb)
-	$(CC) $(CFLAGS) -DDEVICE_TREE='"$(dtb)"' -o $@ $<
-	#$(CC) $(CFLAGS) -DXIP_TARGET_ADDR=0x20400000 -DDEVICE_TREE='"$(dtb)"' $(LFLAGS) -o $@ $<
+elf := $(BUILD_DIR)/sdboot.elf
+$(elf): $(dtb) head.S kprintf.c sd.c 
+	$(CC) $(CFLAGS) -DDEVICE_TREE='"$(dtb)"' $(LFLAGS) -o $@ head.S sd.c kprintf.c
 
 .PHONY: elf
 elf: $(elf)
 
-bin := $(BUILD_DIR)/xip.bin
+bin := $(BUILD_DIR)/sdboot.bin
 $(bin): $(elf)
 	$(OBJCOPY) -O binary $< $@
 
 .PHONY: bin
 bin: $(bin)
 
-hex := $(BUILD_DIR)/xip.hex
+hex := $(BUILD_DIR)/sdboot.hex
 $(hex): $(bin)
-	od -t x4 -An -w4 -v $< > $@
+	#od -t x4 -An -w4 -v $< > $@
+	python3 makehex.py $< 2047 > $@
 
 .PHONY: hex
 hex: $(hex)
@@ -62,4 +42,4 @@ romgen: $(romgen)
 
 .PHONY: clean
 clean::
-	rm -rf $(hex) $(elf) 
+	rm -rf $(hex) $(elf)

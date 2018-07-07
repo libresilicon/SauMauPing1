@@ -6,7 +6,12 @@ You can generate the verilog code by running
 
 make verilog
 
-and an emulator (requires verilator version *3.904*)!!
+and an emulator (requires verilator version *3.904* !!) by running
+
+make sim
+
+The emulator will appear as vsim/emulator and can be executed by running
+
+./vsim/emulator
 
 For the ASIC, we're still working on a DRAM controller so that we don't need the IP cores from Xilinx anymore
-

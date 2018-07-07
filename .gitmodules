@@ -16,6 +16,3 @@
 [submodule "fpga-shells"]
 	path = fpga-shells
 	url = https://github.com/libresilicon/fpga-shells.git
-[submodule "riscv-boom"]
-	path = riscv-boom
-	url = https://github.com/libresilicon/riscv-boom.git

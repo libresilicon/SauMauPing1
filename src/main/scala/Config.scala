@@ -52,7 +52,7 @@ class SauMauPingPeripherals extends Config((site, here, up) => {
 	)
 	case PeripherySPIKey => List(
 		SPIParams(
-			rAddress = BigInt(0x64000L)
+			rAddress = BigInt(0x30000L)
 		)
 	)
 	case PeripheryGPIOKey => List(
@@ -66,8 +66,6 @@ class SauMauPingPeripherals extends Config((site, here, up) => {
 class SauMauPingConfig extends Config(
 	//new WithNBigCores(1)			++
 	new DefaultConfig()			++
-	//new BoomConfig()			++
-	//new WithNExtTopInterrupts(0)		++
 	new SauMauPingPeripherals()		/*++
 	new SauMauPingConfig().alter((site,here,up) => {
 		case PeripheryBusKey => up(PeripheryBusKey, site).copy(frequency = 50000000) // 50 MHz periphery

@@ -20,7 +20,8 @@ class SauMauPing()(implicit p: Parameters)
 {
 	withClockAndReset(clk,rstn) {
 		val dut = Module(LazyModule(new SauMauPingSystem).module)
-		dut.reset := ~rstn
+		//dut.reset := ~rstn
+		dut.reset := ~rstn | dut.debug.ndreset
 		dut.clock := clk
 		//---------------------------------------------------------------------
 		// Connect peripherals
@@ -29,11 +30,11 @@ class SauMauPing()(implicit p: Parameters)
 		//connectSPI      (dut)
 		connectUART(dut)
 		//connectDRAM(dut)
-		//dut.dontTouchPorts()
+		dut.dontTouchPorts()
 		dut.tieOffInterrupts()
 		dut.connectSimAXIMem()
 		dut.connectSimAXIMMIO()
 		dut.l2_frontend_bus_axi4.foreach(_.tieoff)
-		//dut.connectDebug(clock, reset, io.success)
+		dut.connectDebug(clk, ~rstn, success)
 	}
 }

@@ -129,6 +129,7 @@ abstract class ASICShell(implicit val p: Parameters)
 	// Interface
 	val rstn = IO(Input(Bool())) // low active reset
 	val clk = IO(Input(Clock()))
+	val success = IO(Output(Bool()))
 
 	//-----------------------------------------------------------------------
 	// Wire declrations

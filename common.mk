@@ -27,15 +27,15 @@ PATCHVERILOG ?= ""
 BOOTROM_DIR ?= ""
 
 base_dir := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
-export rocketchip_dir := $(base_dir)/rocket-chip
-SBT ?= java -jar $(rocketchip_dir)/sbt-launch.jar ++2.12.4
+export rocketchip_dir = $(base_dir)/rocket-chip
+export sbt = java -jar $(rocketchip_dir)/sbt-launch.jar ++2.12.4
 
 # Build firrtl.jar and put it where chisel3 can find it.
 FIRRTL_JAR ?= $(rocketchip_dir)/firrtl/utils/bin/firrtl.jar
-FIRRTL ?= java -Xmx2G -Xss8M -XX:MaxPermSize=256M -cp $(FIRRTL_JAR) firrtl.Driver
+FIRRTL ?= java -Xmx2G -Xss8M -cp $(FIRRTL_JAR) firrtl.Driver
 
 $(FIRRTL_JAR): $(shell find $(rocketchip_dir)/firrtl/src/main/scala -iname "*.scala")
-	$(MAKE) -C $(rocketchip_dir)/firrtl SBT="$(SBT)" root_dir=$(rocketchip_dir)/firrtl build-scala
+	$(MAKE) -C $(rocketchip_dir)/firrtl sbt="$(sbt)" root_dir=$(rocketchip_dir)/firrtl build-scala
 	touch $(FIRRTL_JAR)
 	mkdir -p $(rocketchip_dir)/lib
 	cp -p $(FIRRTL_JAR) rocket-chip/lib
@@ -46,7 +46,7 @@ $(FIRRTL_JAR): $(shell find $(rocketchip_dir)/firrtl/src/main/scala -iname "*.sc
 firrtl := $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).fir
 $(firrtl): $(shell find $(base_dir)/src/main/scala -name '*.scala') $(FIRRTL_JAR)
 	mkdir -p $(dir $@)
-	$(SBT) "runMain freechips.rocketchip.system.Generator $(BUILD_DIR) $(PROJECT) $(MODEL) $(CONFIG_PROJECT) $(CONFIG)"
+	$(sbt) "runMain freechips.rocketchip.system.Generator $(BUILD_DIR) $(PROJECT) $(MODEL) $(CONFIG_PROJECT) $(CONFIG)"
 
 .PHONY: firrtl
 firrtl: $(firrtl)
@@ -112,3 +112,27 @@ ifneq ($(BOOTROM_DIR),"")
 endif
 	$(MAKE) -C $(FPGA_DIR) clean
 	rm -rf $(BUILD_DIR)
+
+dtb := $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).dtb
+$(dtb): $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).dts
+	dtc -I dts -O dtb -o $@ $<
+
+boom:
+	make -f riscv-boom/Makefile
+
+sim_dir := $(base_dir)/vsim
+sim: romgen $(dtb)
+	cd $(sim_dir) && \
+	verilator --cc --exe \
+	--top-module $(MODEL) \
+	+define+RANDOMIZE_GARBAGE_ASSIGN \
+	--assert --output-split 20000 --output-split-cfuncs 20000 -Wno-STMTDLY --x-assign unique \
+	-O3 -CFLAGS "-O1 -std=c++11 -I/usr/include -DTEST_HARNESS=V$(MODEL) -DVERILATOR -include $(rocketchip_dir)/src/main/resources/csrc/verilator.h -include $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).plusArgs" \
+	-Mdir $(sim_dir) \
+	-o $(sim_dir)/emulator \
+	-I$(rocketchip_dir)/src/main/resources/vsrc \
+	$(VSRCS) \
+	$(CSRCS) \
+	-LDFLAGS " -L/usr/lib -Wl,-rpath,/usr/lib -lfesvr -lpthread" \
+	-CFLAGS "-I$(rocketchip_dir)/src/main/resources/csrc -I$(sim_dir) -include $(sim_dir)/V$(MODEL).h" && \
+	make -f V$(MODEL).mk

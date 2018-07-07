@@ -19,17 +19,6 @@ import sifive.blocks.devices.uart._
 import libresilicon.soc.dram._
 
 class SauMauPingPeripherals extends Config((site, here, up) => {
-	case PeripherySPIKey => List(
-		SPIParams(
-			rAddress = BigInt(0x21000L)
-		)
-	)
-	case PeripheryGPIOKey => List(
-		GPIOParams(
-			address = BigInt(0x22000L),
-			width = 4
-		)
-	)
 	case PeripheryDRAMKey => List(
 		DRAMParams(
 			address = AddressSet(0x3000000000L, 0xFFFFFFFFL),
@@ -43,6 +32,9 @@ class SauMauPingPeripherals extends Config((site, here, up) => {
 	case PeripheryMaskROMKey => List(
 		MaskROMParams(
 			address = 0x10000,
+			depth = 2048,
+			//depth = 4096,
+			//depth = 32768,
 			name = "BootROM"
 		)
 	)
@@ -58,12 +50,24 @@ class SauMauPingPeripherals extends Config((site, here, up) => {
 			sampleDelay = 3
 		)
 	)
+	case PeripherySPIKey => List(
+		SPIParams(
+			rAddress = BigInt(0x64000L)
+		)
+	)
+	case PeripheryGPIOKey => List(
+		GPIOParams(
+			address = BigInt(0x65000L),
+			width = 4
+		)
+	)
 })
 
 class SauMauPingConfig extends Config(
-	new WithNBigCores(1)			++
-	new BaseConfig()			++
-	new WithNExtTopInterrupts(0)		++
+	//new WithNBigCores(1)			++
+	new DefaultConfig()			++
+	//new BoomConfig()			++
+	//new WithNExtTopInterrupts(0)		++
 	new SauMauPingPeripherals()		/*++
 	new SauMauPingConfig().alter((site,here,up) => {
 		case PeripheryBusKey => up(PeripheryBusKey, site).copy(frequency = 50000000) // 50 MHz periphery

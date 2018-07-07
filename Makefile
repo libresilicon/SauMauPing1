@@ -1,5 +1,5 @@
 # See LICENSE for license details.
-base_dir := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
+export base_dir = $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
 # binaries:
 export CC=/usr/bin/riscv64-elf-gcc

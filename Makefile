@@ -9,9 +9,9 @@ export BUILD_DIR = $(base_dir)/builds
 export PROJECT = libresilicon.soc
 export CONFIG_PROJECT = libresilicon.soc
 export MODEL = SauMauPing
+#export MODEL = SauMauPingTestHarness
 export CONFIG = SauMauPingConfig
 export BOOTROM_DIR = $(base_dir)/bootrom/firmware
-export TEST_BENCH=TestDriver
 
 ICARUS_OPTION += -g2012
 ICARUS_OPTION += -DRANDOMIZE_GARBAGE_ASSIGN=1

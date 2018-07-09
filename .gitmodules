@@ -16,3 +16,6 @@
 [submodule "fpga-shells"]
 	path = fpga-shells
 	url = https://github.com/libresilicon/fpga-shells.git
+[submodule "chisel-wishbone"]
+	path = chisel-wishbone
+	url = https://github.com/libresilicon/chisel-wishbone.git

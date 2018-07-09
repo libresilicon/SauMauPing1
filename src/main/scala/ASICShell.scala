@@ -110,8 +110,7 @@ trait HasSDIO { this: ASICShell =>
 	val sd_spi_dq_i     = Wire(Vec(4, Bool()))
 	val sd_spi_dq_o     = Wire(Vec(4, Bool()))
 
-	def connectSPI(dut: HasPeripherySPIModuleImp): Unit = {
-		// SPI
+	def connectSDIO(dut: HasPeripherySPIModuleImp): Unit = {
 		sd_spi_sck := dut.spi(0).sck
 		sd_spi_cs  := dut.spi(0).cs(0)
 
@@ -134,17 +133,13 @@ abstract class ASICShell(implicit val p: Parameters)
 	//-----------------------------------------------------------------------
 	// Wire declrations
 	//-----------------------------------------------------------------------
-	val sys_reset       = Wire(Bool())
-	val sys_clock       = Wire(Clock())
-
 	val dut_clock       = Wire(Clock())
 	val dut_reset       = Wire(Bool())
-	val dut_resetn      = Wire(Bool())
 
 	//-----------------------------------------------------------------------
 	// System reset
 	//-----------------------------------------------------------------------
-	dut_reset := sys_reset
-	dut_clock := sys_clock
+	dut_reset := ~rstn
+	dut_clock := clk
 
 }

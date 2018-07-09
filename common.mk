@@ -125,7 +125,7 @@ sim: romgen $(dtb)
 	mkdir -p $(sim_dir) && \
 	cd $(sim_dir) && \
 	verilator --cc --exe \
-	--top-module $(MODEL) \
+	--top-module $(MODEL) --trace \
 	+define+RANDOMIZE_GARBAGE_ASSIGN \
 	+define+RANDOMIZE_REG_INIT \
 	+define+RANDOMIZE_MEM_INIT \

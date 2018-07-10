@@ -19,3 +19,6 @@
 [submodule "chisel-wishbone"]
 	path = chisel-wishbone
 	url = https://github.com/libresilicon/chisel-wishbone.git
+[submodule "fir2dot"]
+	path = fir2dot
+	url = https://github.com/libresilicon/fir2dot.git

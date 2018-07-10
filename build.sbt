@@ -20,6 +20,9 @@ lazy val commonSettings = Seq(
 // on chisel, etc.
 lazy val rocketchip = RootProject(file("rocket-chip"))
 
+lazy val fir2dot = (project in file("fir2dot"))
+	.settings(commonSettings: _*)
+
 lazy val wishbone = (project in file("chisel-wishbone"))
 	.dependsOn(rocketchip)
 	.settings(commonSettings: _*)
@@ -37,6 +40,7 @@ lazy val libreSiliconBlocks = (project in file("libresilicon-blocks"))
 	.dependsOn(fpgaShells)
 	.dependsOn(sifiveBlocks)
 	.dependsOn(rocketchip)
+	.dependsOn(wishbone)
 	.settings(commonSettings: _*)
 
 lazy val libreSiliconChips = (project in file("."))
@@ -45,4 +49,5 @@ lazy val libreSiliconChips = (project in file("."))
 	.dependsOn(sifiveBlocks)
 	.dependsOn(rocketchip)
 	.dependsOn(wishbone)
+	.dependsOn(fir2dot)
 	.settings(commonSettings: _*)

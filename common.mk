@@ -62,6 +62,12 @@ endif
 .PHONY: verilog
 verilog: $(verilog)
 
+png: verilog
+	$(sbt) "runMain fir2dot.Main $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).fir"
+	mkdir -p $(BUILD_DIR)/dot
+	mv *.dot $(BUILD_DIR)/dot
+	#dot -Tps $(BUILD_DIR)/dot/*.dot -o $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).ps
+
 romgen := $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).rom.v
 $(romgen): $(verilog)
 ifneq ($(BOOTROM_DIR),"")

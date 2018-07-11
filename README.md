@@ -14,4 +14,14 @@ The emulator will appear as vsim/emulator and can be executed by running
 
 ./vsim/emulator
 
+Also there is a primitive method to generate graphs of the diverse blocks. You can either run
+
+make png
+
+or
+
+make svg
+
+and it will generate PNGs/SVGs of all the IP blocks (still pretty nasty big and sometimes unusable output!!)
+
 For the ASIC, we're still working on a DRAM controller so that we don't need the IP cores from Xilinx anymore

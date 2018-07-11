@@ -65,8 +65,11 @@ verilog: $(verilog)
 png: verilog
 	$(sbt) "runMain fir2dot.Main $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).fir"
 	mkdir -p $(BUILD_DIR)/dot
+	mkdir -p $(BUILD_DIR)/png
 	mv *.dot $(BUILD_DIR)/dot
-	#dot -Tps $(BUILD_DIR)/dot/*.dot -o $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).ps
+	for i in $(BUILD_DIR)/dot/*.dot; do \
+		dot -Tpng $$i -o `echo $$i | sed -e 's/dot/png/g'`; \
+	done
 
 romgen := $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).rom.v
 $(romgen): $(verilog)

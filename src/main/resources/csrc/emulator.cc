@@ -274,15 +274,15 @@ done_processing:
   bool dump;
   // reset for several cycles to handle pipelined reset
   for (int i = 0; i < 10; i++) {
-    tile->rstn = 0;
-    tile->clk = 0;
+    tile->io_rstn = 0;
+    tile->io_clk = 0;
     tile->eval();
 #if VM_TRACE
     dump = tfp && trace_count >= start;
     if (dump)
       tfp->dump(static_cast<vluint64_t>(trace_count * 2));
 #endif
-    tile->clk = 1;
+    tile->io_clk = 1;
     tile->eval();
 #if VM_TRACE
     if (dump)
@@ -290,12 +290,12 @@ done_processing:
 #endif
     trace_count ++;
   }
-  tile->rstn = 1;
+  tile->io_rstn = 1;
   done_reset = true;
 
   while (!dtm->done() && !jtag->done() &&
-         !tile->success && trace_count < max_cycles) {
-    tile->clk = 0;
+         !tile->io_success && trace_count < max_cycles) {
+    tile->io_clk = 0;
     tile->eval();
 #if VM_TRACE
     dump = tfp && trace_count >= start;
@@ -303,7 +303,7 @@ done_processing:
       tfp->dump(static_cast<vluint64_t>(trace_count * 2));
 #endif
 
-    tile->clk = 1;
+    tile->io_clk = 1;
     tile->eval();
 #if VM_TRACE
     if (dump)

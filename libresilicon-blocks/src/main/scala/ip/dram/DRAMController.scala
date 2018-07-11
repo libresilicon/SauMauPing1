@@ -3,6 +3,8 @@ package libresilicon.soc.dram
 import Chisel._
 
 import chisel3.experimental.{Analog,attach}
+import chisel3.core.{Input, Output, attach}
+
 import freechips.rocketchip.util.{ElaborationArtefacts}
 import freechips.rocketchip.util.GenericParameterizedBundle
 import freechips.rocketchip.config._
@@ -11,7 +13,10 @@ import freechips.rocketchip.config._
 import freechips.rocketchip.subsystem.BaseSubsystem
 import freechips.rocketchip.diplomacy.{LazyModule, LazyModuleImp, AddressRange, AddressSet}
 
-/*class DRAMController(c: DRAMParams)(implicit p: Parameters) extends LazyModule {
+class DRAMController(c: DRAMParams, outer: DRAMCore)(implicit p: Parameters)
+	extends LazyModuleImp(outer)
+{
+	val io = Input(Bool())
 	//val ranges = AddressRange.fromSets(c.address)
 	//val depth = ranges.head.size
 	//val buffer  = LazyModule(new TLBuffer)
@@ -24,10 +29,10 @@ import freechips.rocketchip.diplomacy.{LazyModule, LazyModuleImp, AddressRange, 
 	//val node: TLInwardNode =
 	//island.node := island.crossAXI4In := yank.node := deint.node := indexer.node := toaxi4.node := buffer.node
 	
-	lazy val module = new LazyModuleImp(this) {
-		val io = IO(new Bundle {
-			LazyModule(new DRAMControllerInterface(c))
-		})
+	//lazy val module = new LazyModuleImp(this) {
+	//	val io = IO(new Bundle {
+	//		LazyModule(new DRAMControllerInterface(c))
+	//	})
 		//io.port <> island.module.io.port
-	}
-}*/
+	//}
+}

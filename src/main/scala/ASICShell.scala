@@ -126,9 +126,12 @@ abstract class ASICShell(implicit val p: Parameters)
 	extends RawModule
 {
 	// Interface
-	val rstn = IO(Input(Bool())) // low active reset
-	val clk = IO(Input(Clock()))
-	val success = IO(Output(Bool()))
+	val io = IO(new Bundle {
+		val rstn = Input(Bool()) // low active reset
+		val clk = Input(Clock())
+		val success = Output(Bool())
+	})
+
 
 	//-----------------------------------------------------------------------
 	// Wire declrations
@@ -139,7 +142,7 @@ abstract class ASICShell(implicit val p: Parameters)
 	//-----------------------------------------------------------------------
 	// System reset
 	//-----------------------------------------------------------------------
-	dut_reset := ~rstn
-	dut_clock := clk
+	dut_reset := ~io.rstn
+	dut_clock := io.clk
 
 }

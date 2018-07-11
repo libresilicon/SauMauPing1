@@ -21,7 +21,7 @@ import libresilicon.soc.dram._
 class SauMauPingPeripherals extends Config((site, here, up) => {
 	case PeripheryDRAMKey => List(
 		DRAMParams(
-			address = AddressSet(0x3000000000L, 0xFFFFFFFFL),
+			address = AddressSet(0x80000000L, 0x10000000L),
 			data_width = 32,
 			address_width = 15,
 			bank_address_width = 3,
@@ -64,13 +64,8 @@ class SauMauPingPeripherals extends Config((site, here, up) => {
 })
 
 class SauMauPingConfig extends Config(
-	//new WithNBigCores(1)			++
-	new DefaultConfig()			++
-	new SauMauPingPeripherals()		/*++
-	new SauMauPingConfig().alter((site,here,up) => {
-		case PeripheryBusKey => up(PeripheryBusKey, site).copy(frequency = 50000000) // 50 MHz periphery
-		case DTSTimebase => BigInt(1000000)
-		case ExtMem => up(ExtMem).map(_.copy(size = 0x40000000L))
-	})*/
+	new TinyConfig()			++
+	//new DefaultConfig()			++
+	new SauMauPingPeripherals()
 )
 

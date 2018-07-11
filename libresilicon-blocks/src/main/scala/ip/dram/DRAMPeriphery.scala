@@ -42,7 +42,7 @@ trait HasPeripheryDRAMImp
 			val dram = IO(new DRAMPortIO(params))
 			dram
 	}
-	(drams zip outer.drams).foreach { case (io, device) =>
-		io <> device.module.ddr3
-	}
+	//(drams zip outer.drams).foreach { case (io, device) =>
+	//	io <> device.module.ddr3
+	///}
 }

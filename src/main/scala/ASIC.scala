@@ -27,14 +27,14 @@ class SauMauPing()(implicit p: Parameters)
 		// Connect peripherals
 		//---------------------------------------------------------------------
 		//connectSPIFlash (dut)
-		connectSDIO(dut)
+		//connectSDIO(dut)
 		connectUART(dut)
 		//connectDRAM(dut)
 		dut.dontTouchPorts()
 		dut.tieOffInterrupts()
-		dut.connectSimAXIMem()
-		dut.connectSimAXIMMIO()
-		dut.l2_frontend_bus_axi4.foreach(_.tieoff)
-		dut.connectDebug(dut_clock, dut_reset, success)
+		//dut.connectSimAXIMem()
+		//dut.connectSimAXIMMIO()
+		//dut.l2_frontend_bus_axi4.foreach(_.tieoff)
+		dut.connectDebug(dut_clock, dut_reset, io.success)
 	}
 }

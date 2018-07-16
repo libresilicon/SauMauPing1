@@ -19,3 +19,9 @@
 [submodule "fir2dot"]
 	path = fir2dot
 	url = https://github.com/libresilicon/fir2dot.git
+[submodule "firviewer"]
+	path = firviewer
+	url = https://github.com/libresilicon/firviewer.git
+[submodule "scalafx"]
+	path = scalafx
+	url = https://github.com/scalafx/scalafx.git

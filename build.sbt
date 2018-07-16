@@ -9,7 +9,8 @@ lazy val commonSettings = Seq(
 		"-unchecked",
 		"-deprecation",
 		"-language:reflectiveCalls",
-		"-Xsource:2.11"
+		"-Xsource:2.11",
+		"-Xsource:2.10"
 	)
 )
 
@@ -20,7 +21,14 @@ lazy val commonSettings = Seq(
 // on chisel, etc.
 lazy val rocketchip = RootProject(file("rocket-chip"))
 
+lazy val scalafx = (project in file("scalafx"))
+	.settings(commonSettings: _*)
+
 lazy val fir2dot = (project in file("fir2dot"))
+	.settings(commonSettings: _*)
+
+lazy val firviewer = (project in file("firviewer"))
+	.dependsOn(scalafx)
 	.settings(commonSettings: _*)
 
 lazy val sifiveBlocks = (project in file("sifive-blocks"))
@@ -44,4 +52,5 @@ lazy val libreSiliconChips = (project in file("."))
 	.dependsOn(sifiveBlocks)
 	.dependsOn(rocketchip)
 	.dependsOn(fir2dot)
+	.dependsOn(firviewer)
 	.settings(commonSettings: _*)

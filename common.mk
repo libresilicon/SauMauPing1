@@ -80,6 +80,8 @@ svg: verilog
 		echo $$i && dot -s0.1 -Tsvg $$i -o `echo $$i | sed -e 's/dot/svg/g'`; \
 	done
 
+viewer: verilog
+	$(sbt) "runMain firviewer.Main --top=$(MODEL) --depth=$(VIEWER_DEPTH) --fir=$(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).fir"
 
 romgen := $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).rom.v
 $(romgen): $(verilog)

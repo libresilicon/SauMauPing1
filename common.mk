@@ -81,7 +81,7 @@ svg: verilog
 	done
 
 viewer: verilog
-	$(sbt) "runMain firviewer.Main --top=$(MODEL) --depth=$(VIEWER_DEPTH) --fir=$(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).fir"
+	$(sbt) "runMain firviewer.Main --top=$(MODEL) --fir=$(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).fir"
 
 romgen := $(BUILD_DIR)/$(CONFIG_PROJECT).$(CONFIG).rom.v
 $(romgen): $(verilog)

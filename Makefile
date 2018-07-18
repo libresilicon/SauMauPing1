@@ -12,7 +12,6 @@ export MODEL = SauMauPing
 #export MODEL = SauMauPingTestHarness
 export CONFIG = SauMauPingConfig
 export BOOTROM_DIR = $(base_dir)/bootrom/firmware
-export VIEWER_DEPTH=0
 
 ICARUS_OPTION += -g2012
 ICARUS_OPTION += -DRANDOMIZE_GARBAGE_ASSIGN=1
